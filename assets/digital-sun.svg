@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="1200" viewBox="0 0 1200 1200">
+  <!-- Digital Sun — top-left corner art. Transparent background. -->
+  <defs>
+    <!-- Colors (tweaked for slate/stone themes) -->
+    <linearGradient id="ringCyan" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%"  stop-color="#22D3EE"/>
+      <stop offset="100%" stop-color="#60A5FA"/>
+    </linearGradient>
+    <linearGradient id="ringAmber" x1="1" y1="0" x2="0" y2="1">
+      <stop offset="0%"  stop-color="#F59E0B"/>
+      <stop offset="100%" stop-color="#FBBF24"/>
+    </linearGradient>
+
+    <!-- Big glow that fades to transparent -->
+    <radialGradient id="sunGlow" cx="0.0" cy="0.0" r="1">
+      <!-- center at (0,0) so it sits in the corner -->
+      <stop offset="0%"  stop-color="#22D3EE" stop-opacity="0.65"/>
+      <stop offset="55%" stop-color="#22D3EE" stop-opacity="0.22"/>
+      <stop offset="100%" stop-color="#22D3EE" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Subtle amber inner glow -->
+    <radialGradient id="coreGlow" cx="0" cy="0" r="1">
+      <stop offset="0%"  stop-color="#F59E0B" stop-opacity="0.9"/>
+      <stop offset="60%" stop-color="#F59E0B" stop-opacity="0.05"/>
+      <stop offset="100%" stop-color="#F59E0B" stop-opacity="0"/>
+    </radialGradient>
+
+    <!-- Glow filter for strokes -->
+    <filter id="softGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Mask to gently fade rings to the right/bottom -->
+    <linearGradient id="fadeMaskGrad" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="white" stop-opacity="1"/>
+      <stop offset="60%" stop-color="white" stop-opacity="0.6"/>
+      <stop offset="100%" stop-color="white" stop-opacity="0"/>
+    </linearGradient>
+    <mask id="fadeMask">
+      <rect x="0" y="0" width="1200" height="1200" fill="url(#fadeMaskGrad)"/>
+    </mask>
+  </defs>
+
+  <!-- Corner glow pad (big, soft) -->
+  <circle cx="0" cy="0" r="520" fill="url(#sunGlow)"/>
+
+  <!-- Core -->
+  <g transform="translate(0,0)" filter="url(#softGlow)">
+    <circle cx="0" cy="0" r="120" fill="url(#coreGlow)"/>
+    <circle cx="0" cy="0" r="128" fill="none" stroke="url(#ringAmber)" stroke-width="2.5"/>
+  </g>
+
+  <!-- Concentric digital rings -->
+  <g mask="url(#fadeMask)" filter="url(#softGlow)">
+    <!-- cyan rings -->
+    <circle cx="0" cy="0" r="170" fill="none" stroke="url(#ringCyan)"  stroke-width="3"  stroke-dasharray="10 6"/>
+    <circle cx="0" cy="0" r="220" fill="none" stroke="url(#ringCyan)"  stroke-width="2"  stroke-dasharray="2 8"/>
+    <circle cx="0" cy="0" r="280" fill="none" stroke="url(#ringCyan)"  stroke-width="2.5" stroke-dasharray="14 10"/>
+    <circle cx="0" cy="0" r="350" fill="none" stroke="url(#ringCyan)"  stroke-width="1.5" stroke-dasharray="4 7"/>
+    <circle cx="0" cy="0" r="430" fill="none" stroke="url(#ringCyan)"  stroke-width="2"  stroke-dasharray="18 12"/>
+
+    <!-- amber accent rings -->
+    <circle cx="0" cy="0" r="200" fill="none" stroke="url(#ringAmber)" stroke-width="1.5" stroke-dasharray="3 9"/>
+    <circle cx="0" cy="0" r="310" fill="none" stroke="url(#ringAmber)" stroke-width="2"   stroke-dasharray="12 14"/>
+  </g>
+
+  <!-- Radial “data rays” -->
+  <g mask="url(#fadeMask)" opacity="0.8" filter="url(#softGlow)">
+    <!-- 18 rays every 10 degrees -->
+    <g stroke-linecap="round" stroke-width="2">
+      <!-- cyan rays -->
+      <g stroke="#22D3EE" opacity="0.7">
+        <!-- generated manually to keep SVG lightweight -->
+        <path d="M0,150 L0,300"/>
+        <path d="M0,150 L104.7,282.8" transform="rotate(10)"/>
+        <path d="M0,150 L200,260" transform="rotate(20)"/>
+        <path d="M0,150 L270,230" transform="rotate(30)"/>
+        <path d="M0,150 L320,190" transform="rotate(40)"/>
+        <path d="M0,150 L360,160" transform="rotate(50)"/>
+      </g>
+      <!-- amber rays -->
+      <g stroke="#F59E0B" opacity="0.6">
+        <path d="M0,130 L0,220" transform="rotate(5)"/>
+        <path d="M0,130 L160,240" transform="rotate(25)"/>
+        <path d="M0,130 L280,210" transform="rotate(45)"/>
+      </g>
+    </g>
+  </g>
+
+  <!-- Tiny “nodes” to feel digital -->
+  <g mask="url(#fadeMask)">
+    <circle cx="95" cy="45" r="3.3" fill="#22D3EE"/>
+    <circle cx="160" cy="88" r="2.8" fill="#F59E0B"/>
+    <circle cx="210" cy="30" r="2.6" fill="#22D3EE"/>
+    <circle cx="260" cy="120" r="2.4" fill="#F59E0B"/>
+    <circle cx="320" cy="70" r="2.2" fill="#22D3EE"/>
+  </g>
+</svg>

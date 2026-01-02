@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en" data-theme="stone-royal">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Privacy & Cookies — Ocure Analytics</title>
+  <meta name="description" content="Privacy Policy and Cookie Preferences for Ocure Analytics."/>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#0f1115;--surface:#151923;--muted:#242a36;--text:#f2f3f7;--text-dim:#c9ced8;--accent:#8fb5ff;--accent-strong:#5b8eff;--ring:#6aa5ff
+    }
+    @media(prefers-color-scheme:light){:root{--bg:#fafafa;--surface:#ffffff;--muted:#e7e7ea;--text:#0b1220;--text-dim:#3f4a5a;--accent:#1d4ed8;--accent-strong:#1e40af;--ring:#2563eb}}
+    *,*::before,*::after{box-sizing:border-box}
+    body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Helvetica,Arial;line-height:1.6;color:var(--text);background:var(--bg)}
+    a{color:var(--accent);text-decoration:none}
+    a:hover{color:var(--accent-strong)}
+    .container{width:min(900px,92vw);margin-inline:auto}
+    header{position:sticky;top:0;background:color-mix(in oklab,var(--surface) 90%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid color-mix(in oklab,var(--muted) 60%,transparent)}
+    .nav{display:flex;align-items:center;justify-content:space-between;padding:.9rem 0}
+    .brand{display:flex;align-items:center;gap:.6rem;font-weight:700;color:var(--text)}
+    .brand-mark{width:26px;height:26px;border-radius:8px;background:linear-gradient(135deg,var(--accent) 10%,#86efac 90%)}
+    main{padding:2.5rem 0}
+    h1{font-size:clamp(1.8rem,3.4vw,2.4rem);margin:.5rem 0 0}
+    h2{font-size:1.25rem;margin:2rem 0 .4rem}
+    p,li{color:var(--text-dim)}
+    .lang-switch{display:flex;gap:.5rem;margin-top:.4rem}
+    .pill{display:inline-flex;align-items:center;padding:.3rem .6rem;border:1px solid color-mix(in oklab,var(--muted) 55%,transparent);border-radius:.6rem;color:var(--text-dim)}
+    .pill.active{border-color:var(--accent);color:var(--text)}
+    .card{background:color-mix(in oklab,var(--surface) 85%,transparent);border:1px solid color-mix(in oklab,var(--muted) 55%,transparent);border-radius:1rem;padding:1rem}
+    footer{border-top:1px solid color-mix(in oklab,var(--muted) 50%,transparent);color:var(--text-dim);padding:2rem 0 3rem;margin-top:2rem}
+
+    /* Cookie banner */
+    .cookie-banner{position:fixed;inset:auto 1rem 1rem 1rem;z-index:1000;display:none;gap:.9rem;align-items:center;justify-content:space-between;flex-wrap:wrap;background:color-mix(in oklab,var(--surface) 92%,transparent);border:1px solid color-mix(in oklab,var(--muted) 55%,transparent);border-radius:1rem;padding:1rem}
+    .cookie-actions{display:flex;gap:.5rem;flex-wrap:wrap}
+    .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem .8rem;border-radius:.6rem;border:1px solid color-mix(in oklab,var(--accent) 35%,transparent);background:linear-gradient(180deg,color-mix(in oklab,var(--accent) 18%,transparent) 0%,transparent);color:var(--text);font-weight:600}
+    .btn.secondary{border-color:color-mix(in oklab,var(--muted) 60%,transparent);background:transparent;color:var(--text-dim)}
+    .btn.link{border:none;background:none;padding:.2rem .3rem}
+
+    /* Preferences modal */
+    .modal-backdrop{position:fixed;inset:0;background:color-mix(in oklab,#000 60%,transparent);display:none;z-index:1001}
+    .modal{position:fixed;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:min(680px,92vw);display:none;background:var(--surface);border:1px solid var(--muted);border-radius:1rem;padding:1rem;z-index:1002}
+    .modal h3{margin:.2rem 0 .6rem}
+    .switch{display:flex;align-items:center;gap:.5rem}
+    .switch input{width:1.2rem;height:1.2rem}
+  </style>
+  <link href="assets/themes.css" rel="stylesheet">
+</head>
+<body>
+  <header>
+    <div class="container nav">
+      <div class="brand"><span class="brand-mark" aria-hidden="true"></span><span>Ocure Analytics</span></div>
+      <a href="/" class="pill">← Back</a>
+    </div>
+  </header>
+
+  <main class="container">
+    <div style="display:flex;align-items:baseline;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+      <div>
+        <div class="pill">Policy v1.0 — 2025‑10‑09</div>
+        <h1>Privacy & Cookies</h1>
+      </div>
+      <div class="lang-switch" role="tablist" aria-label="Language">
+        <button class="pill active" role="tab" aria-selected="true" data-lang="en">English</button>
+        <button class="pill" role="tab" aria-selected="false" data-lang="hu">Magyar</button>
+      </div>
+    </div>
+
+    <!-- EN -->
+    <section id="policy-en" lang="en" class="card" style="margin-top:1rem">
+      <h2>1. Who we are</h2>
+      <p>Ocure Analytics ("we", "us") is a boutique AI consultancy. We are committed to protecting your privacy and handling data transparently and lawfully.</p>
+      <h2>2. What data we process</h2>
+      <ul>
+        <li><strong>Contact data</strong> (name, email, company) when you reach out to us.</li>
+        <li><strong>Service data</strong> generated during projects (under contract and NDA).</li>
+        <li><strong>Usage data</strong> (analytics cookies) only with your consent.</li>
+      </ul>
+      <h2>3. Why we process data</h2>
+      <ul>
+        <li>To respond to inquiries and deliver contracted services.</li>
+        <li>To maintain security and performance of our website.</li>
+        <li>To improve content and services (analytics — optional).</li>
+      </ul>
+      <h2>4. Legal bases</h2>
+      <ul>
+        <li><em>Contract performance</em> and steps prior to entering a contract.</li>
+        <li><em>Legitimate interests</em> (security, site operations).</li>
+        <li><em>Consent</em> for non‑essential cookies and marketing.</li>
+      </ul>
+      <h2>5. Retention</h2>
+      <p>We retain data only as long as necessary for the purposes above, or as required by law and contracts.</p>
+      <h2>6. Sharing</h2>
+      <p>We do not sell your data. We may share with vetted processors (e.g., cloud hosting, analytics) under data processing agreements.</p>
+      <h2>7. Your rights (EU/UK GDPR)</h2>
+      <ul>
+        <li>Access, rectification, erasure, restriction, portability, objection.</li>
+        <li>Withdraw consent at any time without affecting prior processing.</li>
+        <li>Complain to your supervisory authority.</li>
+      </ul>
+      <h2>8. Contact</h2>
+      <p>Email: <a href="mailto:privacy@ocureanalytics.com">privacy@ocureanalytics.com</a>. If you’re a client, use your project channel for secure queries.</p>
+      <h2>9. Cookies</h2>
+        <p>We only use <strong>essential cookies</strong> by default. With your consent, we may use <strong>analytics</strong> and <strong>marketing</strong> cookies. You can change your choices below or anytime via the “Cookie preferences” link in the footer.</p>
+      <div style="margin-top:.6rem">
+        <button class="btn" id="openPrefsEn">Open cookie preferences</button>
+      </div>
+    </section>
+
+    <!-- HU -->
+    <section id="policy-hu" lang="hu" class="card" style="margin-top:1rem; display:none">
+      <h2>1. Kik vagyunk</h2>
+      <p>Az Ocure Analytics ("mi") boutique MI tanácsadó cég. Elkötelezettek vagyunk az adatok átlátható és jogszerű kezelése mellett.</p>
+      <h2>2. Milyen adatokat kezelünk</h2>
+      <ul>
+        <li><strong>Kapcsolati adatok</strong> (név, email, cég), amikor felveszi velünk a kapcsolatot.</li>
+        <li><strong>Szolgáltatási adatok</strong> a projektek során (szerződés és NDA alatt).</li>
+        <li><strong>Használati adatok</strong> (analitikai sütik) csak hozzájárulással.</li>
+      </ul>
+      <h2>3. Miért kezeljük</h2>
+      <ul>
+        <li>Érdeklődések megválaszolása és szerződéses szolgáltatás nyújtása.</li>
+        <li>Weboldal biztonságának és teljesítményének fenntartása.</li>
+        <li>Tartalom és szolgáltatások fejlesztése (analitika — opcionális).</li>
+      </ul>
+      <h2>4. Jogi alapok</h2>
+      <ul>
+        <li><em>Szerződés teljesítése</em> és szerződéskötést megelőző lépések.</li>
+        <li><em>Jogos érdek</em> (biztonság, működtetés).</li>
+        <li><em>Hozzájárulás</em> a nem alapvető sütikhez és marketinghez.</li>
+      </ul>
+      <h2>5. Megőrzés</h2>
+      <p>Az adatokat csak a fenti célokhoz szükséges ideig, illetve jogszabályi/szerződéses kötelezettségig őrizzük.</p>
+      <h2>6. Megosztás</h2>
+      <p>Az adatokat nem értékesítjük. Megbízható adatfeldolgozókkal (pl. felhőszolgáltató, analitika) szerződés keretében működünk együtt.</p>
+      <h2>7. Ön jogai (EU/UK GDPR)</h2>
+      <ul>
+        <li>Hozzáférés, helyesbítés, törlés, korlátozás, hordozhatóság, tiltakozás.</li>
+        <li>A hozzájárulás bármikor visszavonható a korábbi kezelés érintetlenül hagyásával.</li>
+        <li>Panasz a felügyeleti hatóságnál.</li>
+      </ul>
+      <h2>8. Kapcsolat</h2>
+      <p>Email: <a href="mailto:privacy@ocureanalytics.com">privacy@ocureanalytics.com</a>. Ügyfeleknek: használják a projektcsatornát biztonságos megkereséshez.</p>
+      <h2>9. Sütik</h2>
+        <p>Alapértelmezetten csak <strong>alapvető sütiket</strong> használunk. Hozzájárulás esetén <strong>analitikai</strong> és <strong>marketing</strong> sütiket is. Döntését alább vagy bármikor módosíthatja a lábléc „Süti beállítások” linkjével.</p>
+      <div style="margin-top:.6rem">
+        <button class="btn" id="openPrefsHu">Süti beállítások megnyitása</button>
+      </div>
+    </section>
+
+    <section class="card" style="margin-top:1rem">
+      <h2>Cookie categories</h2>
+      <ul>
+        <li><strong>Essential</strong>: required for basic site functions. Always on.</li>
+        <li><strong>Analytics</strong>: helps us understand usage (e.g., page views). Optional.</li>
+        <li><strong>Marketing</strong>: personalization and remarketing. Optional.</li>
+      </ul>
+    </section>
+
+    <p style="margin-top:1rem"><a class="pill" href="#" id="footerPrefs">Cookie preferences</a></p>
+  </main>
+
+  <!-- Cookie banner -->
+  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite">
+    <div style="flex:1;min-width:240px">
+      <strong>Cookies on this site</strong>
+      <p style="margin:.2rem 0 0;color:var(--text-dim)">We use essential cookies. With your consent, we may also use analytics and marketing cookies to improve your experience.</p>
+    </div>
+    <div class="cookie-actions">
+      <button class="btn secondary" id="rejectAll">Reject non‑essential</button>
+      <button class="btn" id="acceptAll">Accept all</button>
+      <button class="btn link" id="manage">Manage</button>
+    </div>
+  </div>
+
+  <!-- Preferences modal -->
+  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"></div>
+  <div class="modal" id="prefsModal" role="dialog" aria-modal="true" aria-labelledby="prefsTitle">
+    <h3 id="prefsTitle">Cookie preferences</h3>
+    <p style="color:var(--text-dim)">Essential cookies are always on to keep the site working. You can choose the rest.</p>
+    <div class="switch"><input type="checkbox" id="analyticsOpt" /><label for="analyticsOpt">Analytics</label></div>
+    <div class="switch"><input type="checkbox" id="marketingOpt" /><label for="marketingOpt">Marketing</label></div>
+    <div style="margin-top:1rem;display:flex;gap:.5rem;justify-content:flex-end">
+      <button class="btn secondary" id="cancelPrefs">Cancel</button>
+      <button class="btn" id="savePrefs">Save</button>
+    </div>
+  </div>
+
+  <footer>
+    <div class="container">© <span id="y"></span> Ocure Analytics — <a href="#" id="footerPrefs2">Cookie preferences</a></div>
+  </footer>
+
+  <script>
+    // Language tabs
+    const tabs = document.querySelectorAll('.lang-switch .pill');
+    const en = document.getElementById('policy-en');
+    const hu = document.getElementById('policy-hu');
+    tabs.forEach(t=>t.addEventListener('click',()=>{
+      tabs.forEach(x=>x.classList.remove('active'));
+      t.classList.add('active');
+      const lang = t.dataset.lang;
+      en.style.display = lang==='en' ? '' : 'none';
+      hu.style.display = lang==='hu' ? '' : 'none';
+    }));
+    document.getElementById('openPrefsEn').onclick = () => document.getElementById('manage').click();
+    document.getElementById('openPrefsHu').onclick = () => document.getElementById('manage').click();
+
+    // Cookie Consent Logic (minimal, GDPR-friendly)
+    const BANNER = document.getElementById('cookieBanner');
+    const MODAL = document.getElementById('prefsModal');
+    const BACK = document.getElementById('modalBackdrop');
+    const A = document.getElementById('analyticsOpt');
+    const M = document.getElementById('marketingOpt');
+    const LS_KEY = 'ocure.cookieConsent.v1';
+
+    function getConsent(){
+      try { return JSON.parse(localStorage.getItem(LS_KEY)||'null'); } catch { return null; }
+    }
+    function setConsent(v){ localStorage.setItem(LS_KEY, JSON.stringify(v)); }
+
+    function showBanner(){ BANNER.style.display = 'flex'; }
+    function hideBanner(){ BANNER.style.display = 'none'; }
+
+    function openModal(){ BACK.style.display='block'; MODAL.style.display='block'; }
+    function closeModal(){ BACK.style.display='none'; MODAL.style.display='none'; }
+
+    function applyFromConsent(c){
+      // Gate non‑essential loaders here. Example:
+      if(c.analytics){
+        // loadScriptIfConsented('analytics', () => { /* your analytics init */ });
+      }
+      if(c.marketing){
+        // loadScriptIfConsented('marketing', () => { /* your marketing pixels */ });
+      }
+    }
+
+    // Buttons
+    document.getElementById('acceptAll').onclick = ()=>{
+      const c = { essential:true, analytics:true, marketing:true, ts:Date.now() };
+      setConsent(c); hideBanner(); applyFromConsent(c);
+    };
+    document.getElementById('rejectAll').onclick = ()=>{
+      const c = { essential:true, analytics:false, marketing:false, ts:Date.now() };
+      setConsent(c); hideBanner(); applyFromConsent(c);
+    };
+    document.getElementById('manage').onclick = ()=>{
+      const c = getConsent() || { essential:true, analytics:false, marketing:false };
+      A.checked = !!c.analytics; M.checked = !!c.marketing; openModal();
+    };
+    document.getElementById('cancelPrefs').onclick = closeModal;
+    document.getElementById('savePrefs').onclick = ()=>{
+      const c = { essential:true, analytics:A.checked, marketing:M.checked, ts:Date.now() };
+      setConsent(c); closeModal(); hideBanner(); applyFromConsent(c);
+    };
+
+    // Footer reopen
+    document.getElementById('footerPrefs').onclick = e => { e.preventDefault(); document.getElementById('manage').click(); };
+    document.getElementById('footerPrefs2').onclick = e => { e.preventDefault(); document.getElementById('manage').click(); };
+
+    // First load
+    const existing = getConsent();
+    if(!existing){ showBanner(); } else { applyFromConsent(existing); }
+
+    // Year
+    document.getElementById('y').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

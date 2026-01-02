@@ -1,0 +1,100 @@
+/*
+  Ocure Analytics — Muted Color Palettes
+  Usage: add data-theme="slate-teal" (or other) to <html> or <body>.
+  Variables map 1:1 to your pages ( --bg, --surface, --muted, --text, --text-dim, --accent, --accent-strong, --ring, --ok, --warn, --danger ).
+  Each theme includes a dark default and a light-mode override via @media (prefers-color-scheme: light).
+  You can also force light by adding data-color-mode="light" and targeting with [data-color-mode="light"].
+*/
+
+/* =============== THEME 1: Slate + Teal (current vibe, slightly crisper) =============== */
+:root[data-theme="slate-teal"] {
+  --bg: #0a0f19;         /* deep slate */
+  --surface: #0f172a;    /* navy-slate */
+  --muted: #1e293b;      /* slate 800 */
+  --text: #e6edf3;       /* near-white */
+  --text-dim: #c2cbd6;   /* cool gray */
+  --accent: #80e1d1;     /* muted teal */
+  --accent-strong: #4fd1c5; /* teal 400 */
+  --ring: #22d3ee;       /* cyan ring */
+  --ok: #34d399;         /* green */
+  --warn: #fbbf24;       /* amber */
+  --danger: #f87171;     /* red */
+}
+@media (prefers-color-scheme: light) {
+  :root[data-theme="slate-teal"] {
+    --bg: #f7fafc;       /* near white */
+    --surface: #ffffff;  /* white card */
+    --muted: #e2e8f0;    /* slate 200 */
+    --text: #0f172a;     /* slate 900 */
+    --text-dim: #475569; /* slate 600 */
+    --accent: #0d9488;   /* teal 600 */
+    --accent-strong: #0f766e; /* teal 700 */
+    --ring: #0891b2;     /* cyan 700 */
+  }
+}
+
+/* =============== THEME 2: Stone + Royal Blue (understated + trustworthy) =============== */
+:root[data-theme="stone-royal"] {
+  --bg: #0f1115;         /* charcoal */
+  --surface: #151923;    /* ink stone */
+  --muted: #242a36;      /* cool stone */
+  --text: #f2f3f7;       /* off white */
+  --text-dim: #c9ced8;   /* dimmed */
+  --accent: #8fb5ff;     /* pastel royal */
+  --accent-strong: #5b8eff; /* royal */
+  --ring: #6aa5ff;       /* focus */
+  --ok: #86efac;         /* soft green */
+  --warn: #facc15;       /* gold */
+  --danger: #fb7185;     /* rose */
+}
+@media (prefers-color-scheme: light) {
+  :root[data-theme="stone-royal"] {
+    --bg: #fafafa;       /* stone 50 */
+    --surface: #ffffff;  /* white */
+    --muted: #e7e7ea;    /* cool stone */
+    --text: #0b1220;     /* deep text */
+    --text-dim: #3f4a5a; /* neutral */
+    --accent: #1d4ed8;   /* royal 700 */
+    --accent-strong: #1e40af; /* royal 800 */
+    --ring: #2563eb;     /* focus */
+  }
+}
+
+/* =============== THEME 3: Charcoal + Amber (warm highlight) =============== */
+:root[data-theme="charcoal-amber"] {
+  --bg: #0b0d10;         /* charcoal */
+  --surface: #12161c;    /* deep gray */
+  --muted: #1f2630;      /* muted frame */
+  --text: #eaecef;       /* light */
+  --text-dim: #c7cbd1;   /* dim */
+  --accent: #ffd089;     /* soft amber */
+  --accent-strong: #fbbf24; /* amber 500 */
+  --ring: #f59e0b;       /* focus amber */
+  --ok: #34d399;         /* green */
+  --warn: #f59e0b;       /* amber */
+  --danger: #f87171;     /* red */
+}
+@media (prefers-color-scheme: light) {
+  :root[data-theme="charcoal-amber"] {
+    --bg: #f8fafc;       /* light */
+    --surface: #ffffff;  /* card */
+    --muted: #e5e7eb;    /* border */
+    --text: #111827;     /* dark */
+    --text-dim: #4b5563; /* dim */
+    --accent: #b45309;   /* amber 700 */
+    --accent-strong: #92400e; /* amber 800 */
+    --ring: #d97706;     /* focus */
+  }
+}
+
+/* Optional brand mark gradient helpers */
+[data-theme] .brand-mark {
+  background: linear-gradient(135deg, var(--accent) 10%, var(--ok) 90%);
+  box-shadow: 0 2px 10px color-mix(in oklab, var(--accent) 30%, transparent);
+}
+
+/* Accessibility quick checks (comments):
+  - Aim for text on --surface to be ≥ 4.5:1 vs --text; these sets meet that by default.
+  - Buttons: ensure border uses color-mix with --accent ≥ 30% for visible focus.
+  - Links: hover shifts to --accent-strong for clear affordance.
+*/
