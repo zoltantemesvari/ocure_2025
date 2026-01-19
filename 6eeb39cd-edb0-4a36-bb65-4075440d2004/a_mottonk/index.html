@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Coming Soon</title>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  body {
+    height: 100vh;
+    background: #000;
+    overflow: hidden;
+    font-family: system-ui, -apple-system, BlinkMacOSystemFont, 'Segoe UI', Roboto, sans-serif;
+    display: grid;
+    place-items: center;
+  }
+
+  .container {
+    position: relative;
+    text-align: center;
+    width: 95%;
+    max-width: 1200px;
+  }
+
+  .text {
+    font-size: clamp(3.5rem, 12vw, 10rem);
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    line-height: 0.9;
+    background: linear-gradient(
+      90deg,
+      #ff00ea 0%, 
+      #00f0ff 25%, 
+      #39ff14 50%, 
+      #fff200 75%, 
+      #ff00ea 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    background-size: 400% 400%;
+    animation: 
+      hueRotate 8s linear infinite,
+      shine 3.5s linear infinite;
+    text-shadow: 
+      0 0 30px rgba(255,0,234,0.7),
+      0 0 60px rgba(0,240,255,0.5),
+      0 0 100px rgba(57,255,20,0.4);
+    filter: drop-shadow(0 0 25px rgba(255,255,255,0.4));
+  }
+
+  @keyframes hueRotate {
+    0%   { filter: hue-rotate(0deg); }
+    100% { filter: hue-rotate(360deg); }
+  }
+
+  @keyframes shine {
+    0%   { background-position: 0% 50%; }
+    50%  { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  /* Extra glow particles effect */
+  .glow {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+    pointer-events: none;
+    background: radial-gradient(circle at 50% 50%, rgba(255,0,234,0.15) 0%, transparent 60%);
+    animation: pulse 6s ease-in-out infinite;
+  }
+
+  @keyframes pulse {
+    0%,100% { opacity: 0.4; transform: scale(1); }
+    50%     { opacity: 0.8; transform: scale(1.15); }
+  }
+
+  @media (max-width: 600px) {
+    .text {
+      font-size: clamp(3.2rem, 14vw, 9rem);
+    }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+  <div class="glow"></div>
+  <h1 class="text">Mindenkit megbaszunk.</h1>
+</div>
+
+<script>
+// Just for extra randomness in animation feel
+document.querySelector('.text').style.animationDelay = 
+  (Math.random() * 2) + 's';
+</script>
+
+</body>
+</html>
