@@ -1,246 +1,682 @@
 <!doctype html>
-<html lang="en"  data-theme="charcoal-amber">
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Ocure Analytics — AI Consulting</title>
-  <meta name="description" content="Ocure Analytics is a boutique AI consultancy helping companies find, design, and implement high‑value AI solutions — from on‑prem inference to cloud deployments." />
-  <meta name="theme-color" content="#0f172a" />
-  <link rel="icon" href="favicon.png" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Sansation:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-  <script defer src="/assets/consent.js"></script>
-  <style>
-    /* ============== Design Tokens (easy to tweak) ============== */
-    :root {
-      --bg: #0b1020;          /* page background */
-      --surface: #0f172a;     /* card / header */
-      --muted: #1e293b;       /* subtle separators */
-      --text: #e5e7eb;        /* primary text */
-      --text-dim: #cbd5e1;    /* secondary text */
-      --accent: #93c5fd;      /* links, accents */
-      --accent-strong: #60a5fa;
-      --ring: #7dd3fc;        /* focus ring */
-      --ok: #34d399;          /* success */
-      --warn: #fbbf24;        /* warning */
-      --danger: #f87171;      /* danger */
-    }
+<html lang="en" data-theme="charcoal-amber">
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <title>Ocure Analytics — AI Consulting</title>
+        <meta
+            name="description"
+            content="Ocure Analytics is a boutique AI consultancy helping companies find, design, and implement high‑value AI solutions — from on‑prem inference to cloud deployments."
+        />
+        <meta name="theme-color" content="#0f172a" />
+        <link rel="icon" href="favicon.png" />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Sansation:wght@300;400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <script defer src="/assets/consent.js"></script>
+        <style>
+            /* ============== Design Tokens (easy to tweak) ============== */
+            :root {
+                --bg: #0b1020; /* page background */
+                --surface: #0f172a; /* card / header */
+                --muted: #1e293b; /* subtle separators */
+                --text: #e5e7eb; /* primary text */
+                --text-dim: #cbd5e1; /* secondary text */
+                --accent: #93c5fd; /* links, accents */
+                --accent-strong: #60a5fa;
+                --ring: #7dd3fc; /* focus ring */
+                --ok: #34d399; /* success */
+                --warn: #fbbf24; /* warning */
+                --danger: #f87171; /* danger */
+            }
 
-    @media (prefers-color-scheme: light) {
-      :root {
-        --bg: #f8fafc;
-        --surface: #ffffff;
-        --muted: #e2e8f0;
-        --text: #0f172a;
-        --text-dim: #334155;
-        --accent: #2563eb;
-        --accent-strong: #1d4ed8;
-        --ring: #2563eb;
-      }
-    }
+            @media (prefers-color-scheme: light) {
+                :root {
+                    --bg: #f8fafc;
+                    --surface: #ffffff;
+                    --muted: #e2e8f0;
+                    --text: #0f172a;
+                    --text-dim: #334155;
+                    --accent: #2563eb;
+                    --accent-strong: #1d4ed8;
+                    --ring: #2563eb;
+                }
+            }
 
-    /* ============== Base Styles ============== */
-    *, *::before, *::after { box-sizing: border-box; }
-    html { scroll-behavior: smooth; }
-    body {
-      margin: 0;
-      font-family: Sansation, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, "Apple Color Emoji", "Segoe UI Emoji";
-      color: var(--text);
-       background-color: var(--bg);
-  background-image: url("assets/digital-sun.svg");
-  background-repeat: no-repeat;
-  /* move it down & a bit left; adjust to taste */
-  background-position: left -140px top 140px;
-  /* make it larger but responsive */
-  background-size: clamp(640px, 58vw, 980px) auto;
-  /* keep it fixed while scrolling */
-  background-attachment: fixed;
-      line-height: 1.6;
-    }
-    img { max-width: 100%; display: block; height: auto; }
-    a { color: var(--accent); text-decoration: none; }
-    a:hover { color: var(--accent-strong); }
+            /* ============== Base Styles ============== */
+            *,
+            *::before,
+            *::after {
+                box-sizing: border-box;
+            }
+            html {
+                scroll-behavior: smooth;
+            }
+            body {
+                margin: 0;
+                font-family:
+                    Sansation,
+                    system-ui,
+                    -apple-system,
+                    Segoe UI,
+                    Roboto,
+                    Helvetica,
+                    Arial,
+                    "Apple Color Emoji",
+                    "Segoe UI Emoji";
+                color: var(--text);
+                background-color: var(--bg);
+                background-image: url("assets/digital-sun.svg");
+                background-repeat: no-repeat;
+                /* move it down & a bit left; adjust to taste */
+                background-position: left -140px top 140px;
+                /* make it larger but responsive */
+                background-size: clamp(640px, 58vw, 980px) auto;
+                /* keep it fixed while scrolling */
+                background-attachment: fixed;
+                line-height: 1.6;
+            }
+            img {
+                max-width: 100%;
+                display: block;
+                height: auto;
+            }
+            a {
+                color: var(--accent);
+                text-decoration: none;
+            }
+            a:hover {
+                color: var(--accent-strong);
+            }
 
-    .container { width: min(1100px, 92vw); margin-inline: auto; }
+            .container {
+                width: min(1100px, 92vw);
+                margin-inline: auto;
+            }
 
-    /* ============== Header ============== */
-    .header {
-      position: sticky; top: 0; z-index: 50;
-      background: color-mix(in oklab, var(--surface) 85%, transparent 15%);
-      -webkit-backdrop-filter: saturate(120%) blur(10px);
-      backdrop-filter: saturate(120%) blur(10px);
-      border-bottom: 1px solid color-mix(in lab, var(--muted), transparent 60%);
-    }
-    .nav { display: flex; align-items: center; justify-content: space-between; padding: .8rem 0; }
-    .brand { display: flex; align-items: center; gap: .6rem; font-weight: 700; letter-spacing: .2px; color: var(--text); }
-    .brand-mark { width: 28px; height: 28px; border-radius: 8px; background: linear-gradient(135deg, var(--accent) 10%, var(--ok) 90%); box-shadow: 0 2px 10px color-mix(in oklab, var(--accent) 30%, transparent); }
+            /* ============== Header ============== */
+            .header {
+                position: sticky;
+                top: 0;
+                z-index: 50;
+                background: color-mix(
+                    in oklab,
+                    var(--surface) 85%,
+                    transparent 15%
+                );
+                -webkit-backdrop-filter: saturate(120%) blur(10px);
+                backdrop-filter: saturate(120%) blur(10px);
+                border-bottom: 1px solid
+                    color-mix(in lab, var(--muted), transparent 60%);
+            }
+            .nav {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                padding: 0.8rem 0;
+            }
+            .brand {
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
+                font-weight: 700;
+                letter-spacing: 0.2px;
+                color: var(--text);
+            }
+            .brand-mark {
+                width: 28px;
+                height: 28px;
+                border-radius: 8px;
+                background: linear-gradient(
+                    135deg,
+                    var(--accent) 10%,
+                    var(--ok) 90%
+                );
+                box-shadow: 0 2px 10px
+                    color-mix(in oklab, var(--accent) 30%, transparent);
+            }
 
-    .nav-links { display: flex; gap: 1rem; align-items: center; }
-    .nav-links a { color: var(--text-dim); font-weight: 500; padding: .5rem .7rem; border-radius: .6rem; }
-    .nav-links a:hover { background: color-mix(in oklab, var(--muted) 50%, transparent); color: var(--text); }
+            .nav-links {
+                display: flex;
+                gap: 1rem;
+                align-items: center;
+            }
+            .nav-links a {
+                color: var(--text-dim);
+                font-weight: 500;
+                padding: 0.5rem 0.7rem;
+                border-radius: 0.6rem;
+            }
+            .nav-links a:hover {
+                background: color-mix(in oklab, var(--muted) 50%, transparent);
+                color: var(--text);
+            }
 
-    .btn {
-      display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-      padding: .8rem 1rem; border-radius: .8rem; font-weight: 600;
-      border: 1px solid color-mix(in oklab, var(--accent) 35%, transparent);
-      color: var(--text);
-      background: linear-gradient(180deg, color-mix(in oklab, var(--accent) 22%, transparent) 0%, transparent 100%);
-      box-shadow: 0 8px 24px -12px color-mix(in oklab, var(--accent) 45%, transparent);
-    }
-    .btn:hover { transform: translateY(-1px); box-shadow: 0 14px 30px -16px color-mix(in oklab, var(--accent) 60%, transparent); }
-    .btn:active { transform: translateY(0); }
-    .hu { background-image: url("/assets/hu.png"); background-size: cover; /* Scales the image to cover the button */
-    background-position: center; /* Centers the image */
-    background-repeat: no-repeat; /* Prevents repeating */
-     display: inline-flex; align-items: center; justify-content: center; gap: .5rem;
-      padding: .8rem 1rem; border-radius: .8rem; font-weight: 600;
-      border: 1px solid color-mix(in oklab, var(--accent) 35%, transparent);
-      color: var(--text);
-      box-shadow: 0 8px 24px -12px color-mix(in oklab, var(--accent) 45%, transparent);}
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                padding: 0.8rem 1rem;
+                border-radius: 0.8rem;
+                font-weight: 600;
+                border: 1px solid
+                    color-mix(in oklab, var(--accent) 35%, transparent);
+                color: var(--text);
+                background: linear-gradient(
+                    180deg,
+                    color-mix(in oklab, var(--accent) 22%, transparent) 0%,
+                    transparent 100%
+                );
+                box-shadow: 0 8px 24px -12px
+                    color-mix(in oklab, var(--accent) 45%, transparent);
+            }
+            .btn:hover {
+                transform: translateY(-1px);
+                box-shadow: 0 14px 30px -16px
+                    color-mix(in oklab, var(--accent) 60%, transparent);
+            }
+            .btn:active {
+                transform: translateY(0);
+            }
+            .hu {
+                background-image: url("/assets/hu.png");
+                background-size: cover; /* Scales the image to cover the button */
+                background-position: center; /* Centers the image */
+                background-repeat: no-repeat; /* Prevents repeating */
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                gap: 0.5rem;
+                padding: 0.8rem 1rem;
+                border-radius: 0.8rem;
+                font-weight: 600;
+                border: 1px solid
+                    color-mix(in oklab, var(--accent) 35%, transparent);
+                color: var(--text);
+                box-shadow: 0 8px 24px -12px
+                    color-mix(in oklab, var(--accent) 45%, transparent);
+            }
 
-    /* Mobile menu */
-    .menu-toggle { display: none; background: none; border: none; color: var(--text); font-size: 1.4rem; }
-    @media (max-width: 900px) {
-      .nav-links { display: none; position: absolute; inset: auto 1rem 1rem 1rem; flex-direction: column; background: var(--surface); border: 1px solid var(--muted); padding: 1rem; border-radius: 1rem; }
-      .nav-links.open { display: flex; position: sticky;}
-      .menu-toggle { display: inline-flex; }
-    }
+            /* Mobile menu */
+            .menu-toggle {
+                display: none;
+                background: none;
+                border: none;
+                color: var(--text);
+                font-size: 1.4rem;
+            }
+            @media (max-width: 900px) {
+                .nav-links {
+                    display: none;
+                    position: absolute;
+                    inset: auto 1rem 1rem 1rem;
+                    flex-direction: column;
+                    background: var(--surface);
+                    border: 1px solid var(--muted);
+                    padding: 1rem;
+                    border-radius: 1rem;
+                }
+                .nav-links.open {
+                    display: flex;
+                    position: sticky;
+                }
+                .menu-toggle {
+                    display: inline-flex;
+                }
+            }
 
-    /* ============== Hero ============== */
-    .hero { padding: clamp(4rem, 8vw, 8rem) 0 3rem; position: relative; overflow: clip; }
-    .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 2.5rem; align-items: center; }
-    @media (max-width: 950px) { .hero-grid { grid-template-columns: 1fr; } }
+            /* ============== Hero ============== */
+            .hero {
+                padding: clamp(4rem, 8vw, 8rem) 0 3rem;
+                position: relative;
+                overflow: clip;
+            }
+            .hero-grid {
+                display: grid;
+                grid-template-columns: 1.2fr 1fr;
+                gap: 2.5rem;
+                align-items: center;
+            }
+            @media (max-width: 950px) {
+                .hero-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
 
-    .eyebrow { text-transform: uppercase; letter-spacing: .16em; font-weight: 700; color: var(--accent); font-size: .85rem; }
-    h1 { margin: .4rem 0 1rem; font-weight: 800; line-height: 1.1; font-size: clamp(2rem, 5vw, 3.25rem); }
-    .lead { font-size: clamp(1rem, 1.6vw, 1.15rem); color: var(--text-dim); }
+            .eyebrow {
+                text-transform: uppercase;
+                letter-spacing: 0.16em;
+                font-weight: 700;
+                color: var(--accent);
+                font-size: 0.85rem;
+            }
+            h1 {
+                margin: 0.4rem 0 1rem;
+                font-weight: 800;
+                line-height: 1.1;
+                font-size: clamp(2rem, 5vw, 3.25rem);
+            }
+            .lead {
+                font-size: clamp(1rem, 1.6vw, 1.15rem);
+                color: var(--text-dim);
+            }
 
-    .hero-cta { margin-top: 1.5rem; display: flex; gap: .8rem; flex-wrap: wrap; }
-    .btn-ghost { border-color: var(--muted); background: transparent; box-shadow: none; color: var(--text-dim); }
-    .btn-ghost:hover { background: color-mix(in oklab, var(--muted) 50%, transparent); color: var(--text); }
+            .hero-cta {
+                margin-top: 1.5rem;
+                display: flex;
+                gap: 0.8rem;
+                flex-wrap: wrap;
+            }
+            .btn-ghost {
+                border-color: var(--muted);
+                background: transparent;
+                box-shadow: none;
+                color: var(--text-dim);
+            }
+            .btn-ghost:hover {
+                background: color-mix(in oklab, var(--muted) 50%, transparent);
+                color: var(--text);
+            }
 
-    .hero-media { position: relative; border-radius: 1.2rem; overflow: hidden; border: 1px solid color-mix(in oklab, var(--muted) 55%, transparent); }
-    .hero-media img { aspect-ratio: 16/11; object-fit: cover; }
-    .media-badge { position: absolute; inset: auto auto 1rem 1rem; background: color-mix(in oklab, var(--surface) 72%, transparent); border: 1px solid var(--muted); padding: .6rem .8rem; border-radius: .8rem; font-size: .9rem; }
+            .hero-media {
+                position: relative;
+                border-radius: 1.2rem;
+                overflow: hidden;
+                border: 1px solid
+                    color-mix(in oklab, var(--muted) 55%, transparent);
+            }
+            .hero-media img {
+                aspect-ratio: 16/11;
+                object-fit: cover;
+            }
+            .media-badge {
+                position: absolute;
+                inset: auto auto 1rem 1rem;
+                background: color-mix(
+                    in oklab,
+                    var(--surface) 72%,
+                    transparent
+                );
+                border: 1px solid var(--muted);
+                padding: 0.6rem 0.8rem;
+                border-radius: 0.8rem;
+                font-size: 0.9rem;
+            }
 
-    /* ============== Logos / social proof ============== */
-    .logo-row { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1.2rem; align-items: center; opacity: .85; }
-    .logo { height: 28px; filter: contrast(0.85) grayscale(1) opacity(.8); }
-    @media (max-width: 800px) { .logo-row { grid-template-columns: repeat(3, 1fr); } }
+            /* ============== Logos / social proof ============== */
+            .logo-row {
+                display: grid;
+                grid-template-columns: repeat(5, 1fr);
+                gap: 1.2rem;
+                align-items: center;
+                opacity: 0.85;
+            }
+            .logo {
+                height: 28px;
+                filter: contrast(0.85) grayscale(1) opacity(0.8);
+            }
+            @media (max-width: 800px) {
+                .logo-row {
+                    grid-template-columns: repeat(3, 1fr);
+                }
+            }
 
-    /* ============== Sections ============== */
-    section { padding: clamp(3rem, 7vw, 5rem) 0; }
-    .section-title { font-size: clamp(1.4rem, 3vw, 2.1rem); line-height: 1.2; margin-bottom: .7rem; }
-    .section-lead { color: var(--text-dim); max-width: 70ch; }
+            /* ============== Sections ============== */
+            section {
+                padding: clamp(3rem, 7vw, 5rem) 0;
+            }
+            .section-title {
+                font-size: clamp(1.4rem, 3vw, 2.1rem);
+                line-height: 1.2;
+                margin-bottom: 0.7rem;
+            }
+            .section-lead {
+                color: var(--text-dim);
+                max-width: 70ch;
+            }
 
-    /* About */
-    .split { display: grid; grid-template-columns: 1.1fr 1fr; gap: 2rem; align-items: center; }
-    @media (max-width: 950px) { .split { grid-template-columns: 1fr; } }
-    .card {
-      background: color-mix(in oklab, var(--surface) 75%, transparent);
-      border: 1px solid color-mix(in oklab, var(--muted) 55%, transparent);
-      border-radius: 1.1rem; padding: 1.25rem;
-      box-shadow: 0 20px 60px -35px color-mix(in oklab, var(--muted) 75%, transparent);
-    }
+            /* About */
+            .split {
+                display: grid;
+                grid-template-columns: 1.1fr 1fr;
+                gap: 2rem;
+                align-items: center;
+            }
+            @media (max-width: 950px) {
+                .split {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .card {
+                background: color-mix(
+                    in oklab,
+                    var(--surface) 75%,
+                    transparent
+                );
+                border: 1px solid
+                    color-mix(in oklab, var(--muted) 55%, transparent);
+                border-radius: 1.1rem;
+                padding: 1.25rem;
+                box-shadow: 0 20px 60px -35px
+                    color-mix(in oklab, var(--muted) 75%, transparent);
+            }
 
-    /* Services */
-    .grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1.2rem; }
-    @media (max-width: 1100px) { .grid { grid-template-columns: repeat(2, 1fr); } }
-    @media (max-width: 650px) { .grid { grid-template-columns: 1fr; } }
-    .service { padding: 1.1rem; border-radius: 1rem; border: 1px solid color-mix(in oklab, var(--muted) 55%, transparent); background: color-mix(in oklab, var(--surface) 70%, transparent); }
-    .service h3 { margin: .2rem 0 .4rem; font-size: 1.05rem; }
-    .service p { color: var(--text-dim); font-size: .96rem; }
-    .badge { display:inline-block; padding: .35rem .6rem; border-radius: .5rem; font-size: .75rem; background: color-mix(in oklab, var(--muted) 50%, transparent); color: var(--text-dim); border:1px solid color-mix(in oklab, var(--muted) 65%, transparent) }
+            /* Services */
+            .grid {
+                display: grid;
+                grid-template-columns: repeat(4, 1fr);
+                gap: 1.2rem;
+            }
+            @media (max-width: 1100px) {
+                .grid {
+                    grid-template-columns: repeat(2, 1fr);
+                }
+            }
+            @media (max-width: 650px) {
+                .grid {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .service {
+                padding: 1.1rem;
+                border-radius: 1rem;
+                border: 1px solid
+                    color-mix(in oklab, var(--muted) 55%, transparent);
+                background: color-mix(
+                    in oklab,
+                    var(--surface) 70%,
+                    transparent
+                );
+            }
+            .service h3 {
+                margin: 0.2rem 0 0.4rem;
+                font-size: 1.05rem;
+            }
+            .service p {
+                color: var(--text-dim);
+                font-size: 0.96rem;
+            }
+            .badge {
+                display: inline-block;
+                padding: 0.35rem 0.6rem;
+                border-radius: 0.5rem;
+                font-size: 0.75rem;
+                background: color-mix(in oklab, var(--muted) 50%, transparent);
+                color: var(--text-dim);
+                border: 1px solid
+                    color-mix(in oklab, var(--muted) 65%, transparent);
+            }
 
-    /* Process */
-    .steps { counter-reset: step; display: grid; grid-template-columns: repeat(3, 1fr); gap: 1rem; }
-    @media (max-width: 900px) { .steps { grid-template-columns: 1fr; } }
-    .step { position: relative; padding: 1.1rem 1.1rem 1.1rem 3.3rem; border: 1px dashed color-mix(in oklab, var(--muted) 60%, transparent); border-radius: 1rem; background: color-mix(in oklab, var(--surface) 65%, transparent); }
-    .step::before { counter-increment: step; content: counter(step); position: absolute; left: .9rem; top: 1rem; width: 1.8rem; height: 1.8rem; display:grid; place-items:center; border-radius: .5rem; background: linear-gradient(135deg, var(--accent) 0%, var(--ok) 100%); color: #081018; font-weight: 800; }
+            /* Process */
+            .steps {
+                counter-reset: step;
+                display: grid;
+                grid-template-columns: repeat(3, 1fr);
+                gap: 1rem;
+            }
+            @media (max-width: 900px) {
+                .steps {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .step {
+                position: relative;
+                padding: 1.1rem 1.1rem 1.1rem 3.3rem;
+                border: 1px dashed
+                    color-mix(in oklab, var(--muted) 60%, transparent);
+                border-radius: 1rem;
+                background: color-mix(
+                    in oklab,
+                    var(--surface) 65%,
+                    transparent
+                );
+            }
+            .step::before {
+                counter-increment: step;
+                content: counter(step);
+                position: absolute;
+                left: 0.9rem;
+                top: 1rem;
+                width: 1.8rem;
+                height: 1.8rem;
+                display: grid;
+                place-items: center;
+                border-radius: 0.5rem;
+                background: linear-gradient(
+                    135deg,
+                    var(--accent) 0%,
+                    var(--ok) 100%
+                );
+                color: #081018;
+                font-weight: 800;
+            }
 
-    /* Philosophy */
-    blockquote { margin: 0; padding: 1.2rem; border-left: 4px solid var(--accent); background: color-mix(in oklab, var(--surface) 65%, transparent); border-radius: .8rem; }
+            /* Philosophy */
+            blockquote {
+                margin: 0;
+                padding: 1.2rem;
+                border-left: 4px solid var(--accent);
+                background: color-mix(
+                    in oklab,
+                    var(--surface) 65%,
+                    transparent
+                );
+                border-radius: 0.8rem;
+            }
 
-    /* CTA */
-    .cta {
-      background: radial-gradient(700px 400px at 80% -10%, color-mix(in oklab, var(--accent) 20%, transparent) 0%, transparent 60%),
-                  linear-gradient(180deg, color-mix(in oklab, var(--surface) 85%, transparent) 0%, transparent 100%);
-      border: 1px solid color-mix(in oklab, var(--muted) 50%, transparent);
-      border-radius: 1.2rem;
-      padding: clamp(1.25rem, 2vw, 2rem);
-      text-align: center;
-    }
+            /* CTA */
+            .cta {
+                background:
+                    radial-gradient(
+                        700px 400px at 80% -10%,
+                        color-mix(in oklab, var(--accent) 20%, transparent) 0%,
+                        transparent 60%
+                    ),
+                    linear-gradient(
+                        180deg,
+                        color-mix(in oklab, var(--surface) 85%, transparent) 0%,
+                        transparent 100%
+                    );
+                border: 1px solid
+                    color-mix(in oklab, var(--muted) 50%, transparent);
+                border-radius: 1.2rem;
+                padding: clamp(1.25rem, 2vw, 2rem);
+                text-align: center;
+            }
 
-    /* Footer */
-    footer { padding: 2rem 0 3rem; color: var(--text-dim); border-top: 1px solid color-mix(in oklab, var(--muted) 50%, transparent); }
-    .foot-grid { display: grid; grid-template-columns: 2fr 1fr 1fr; gap: 1.2rem; }
-    @media (max-width: 900px) { .foot-grid { grid-template-columns: 1fr; } }
+            /* Footer */
+            footer {
+                padding: 2rem 0 3rem;
+                color: var(--text-dim);
+                border-top: 1px solid
+                    color-mix(in oklab, var(--muted) 50%, transparent);
+            }
+            .foot-grid {
+                display: grid;
+                grid-template-columns: 2fr 1fr 1fr;
+                gap: 1.2rem;
+            }
+            @media (max-width: 900px) {
+                .foot-grid {
+                    grid-template-columns: 1fr;
+                }
+            }
 
-    /* Accessibility */
-    :focus-visible { outline: 3px solid var(--ring); outline-offset: 2px; border-radius: 6px; }
-    @media (prefers-reduced-motion: reduce) {
-      * { transition: none !important; animation: none !important; }
-    }
+            /* Accessibility */
+            :focus-visible {
+                outline: 3px solid var(--ring);
+                outline-offset: 2px;
+                border-radius: 6px;
+            }
+            @media (prefers-reduced-motion: reduce) {
+                * {
+                    transition: none !important;
+                    animation: none !important;
+                }
+            }
 
-     /* Cookie banner */
-    .cookie-banner{position:fixed;inset:auto 1rem 1rem 1rem;z-index:1000;display:none;gap:.9rem;align-items:center;justify-content:space-between;flex-wrap:wrap;background:color-mix(in oklab,var(--surface) 92%,transparent);border:1px solid color-mix(in oklab,var(--muted) 55%,transparent);border-radius:1rem;padding:1rem}
-    .cookie-actions{display:flex;gap:.5rem;flex-wrap:wrap}
-    .btn{display:inline-flex;align-items:center;gap:.4rem;padding:.55rem .8rem;border-radius:.6rem;border:1px solid color-mix(in oklab,var(--accent) 35%,transparent);background:linear-gradient(180deg,color-mix(in oklab,var(--accent) 18%,transparent) 0%,transparent);color:var(--text);font-weight:600}
-    .btn.secondary{border-color:color-mix(in oklab,var(--muted) 60%,transparent);background:transparent;color:var(--text-dim)}
-    .btn.link{border:none;background:none;padding:.2rem .3rem}
+            /* Cookie banner */
+            .cookie-banner {
+                position: fixed;
+                inset: auto 1rem 1rem 1rem;
+                z-index: 1000;
+                display: none;
+                gap: 0.9rem;
+                align-items: center;
+                justify-content: space-between;
+                flex-wrap: wrap;
+                background: color-mix(
+                    in oklab,
+                    var(--surface) 92%,
+                    transparent
+                );
+                border: 1px solid
+                    color-mix(in oklab, var(--muted) 55%, transparent);
+                border-radius: 1rem;
+                padding: 1rem;
+            }
+            .cookie-actions {
+                display: flex;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+            .btn {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                padding: 0.55rem 0.8rem;
+                border-radius: 0.6rem;
+                border: 1px solid
+                    color-mix(in oklab, var(--accent) 35%, transparent);
+                background: linear-gradient(
+                    180deg,
+                    color-mix(in oklab, var(--accent) 18%, transparent) 0%,
+                    transparent
+                );
+                color: var(--text);
+                font-weight: 600;
+            }
+            .btn.secondary {
+                border-color: color-mix(
+                    in oklab,
+                    var(--muted) 60%,
+                    transparent
+                );
+                background: transparent;
+                color: var(--text-dim);
+            }
+            .btn.link {
+                border: none;
+                background: none;
+                padding: 0.2rem 0.3rem;
+            }
 
-    /* Preferences modal */
-    .modal-backdrop{position:fixed;inset:0;background:color-mix(in oklab,#000 60%,transparent);display:none;z-index:1001}
-    .modal{position:fixed;inset:50% auto auto 50%;transform:translate(-50%,-50%);width:min(680px,92vw);display:none;background:var(--surface);border:1px solid var(--muted);border-radius:1rem;padding:1rem;z-index:1002}
-    .modal h3{margin:.2rem 0 .6rem}
-    .switch{display:flex;align-items:center;gap:.5rem}
-    .switch input{width:1.2rem;height:1.2rem}
-  </style>
-  <link href="assets/themes.css" rel="stylesheet">
-</head>
-<body>
-  <!-- =================== Header =================== -->
-  <header class="header" role="banner">
-    <div class="container nav">
-      <a class="brand" href="#home" aria-label="Ocure Analytics home">
-        <img src="assets/logo.png" alt="Ocure Analytics logo" style="width: 12em; margin: 1em" />
-      </a>
-      <nav aria-label="Primary">
-        <button class="menu-toggle" aria-controls="menu" aria-expanded="false" title="Menu" id="menuToggle">☰</button>
-        <div class="nav-links" id="menu">
-          <a href="#about">About</a>
-          <a href="#services">Services</a>
-          <a href="#process">Process</a>
-          <a href="#philosophy">Philosophy</a>
-          <a href="#contact" class="btn">Get in touch</a>
-          <!-- =================== coming soon =================== <a href="/hu/" class="hu">Magyar</a>  -->
-        </div>
-      </nav>
-    </div>
-  </header>
+            /* Preferences modal */
+            .modal-backdrop {
+                position: fixed;
+                inset: 0;
+                background: color-mix(in oklab, #000 60%, transparent);
+                display: none;
+                z-index: 1001;
+            }
+            .modal {
+                position: fixed;
+                inset: 50% auto auto 50%;
+                transform: translate(-50%, -50%);
+                width: min(680px, 92vw);
+                display: none;
+                background: var(--surface);
+                border: 1px solid var(--muted);
+                border-radius: 1rem;
+                padding: 1rem;
+                z-index: 1002;
+            }
+            .modal h3 {
+                margin: 0.2rem 0 0.6rem;
+            }
+            .switch {
+                display: flex;
+                align-items: center;
+                gap: 0.5rem;
+            }
+            .switch input {
+                width: 1.2rem;
+                height: 1.2rem;
+            }
+        </style>
+        <link href="assets/themes.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- =================== Header =================== -->
+        <header class="header" role="banner">
+            <div class="container nav">
+                <a class="brand" href="#home" aria-label="Ocure Analytics home">
+                    <img
+                        src="assets/logo.png"
+                        alt="Ocure Analytics logo"
+                        style="width: 12em; margin: 1em"
+                    />
+                </a>
+                <nav aria-label="Primary">
+                    <button
+                        class="menu-toggle"
+                        aria-controls="menu"
+                        aria-expanded="false"
+                        title="Menu"
+                        id="menuToggle"
+                    >
+                        ☰
+                    </button>
+                    <div class="nav-links" id="menu">
+                        <a href="#about">About</a>
+                        <a href="#services">Services</a>
+                        <a href="#process">Process</a>
+                        <a href="#philosophy">Philosophy</a>
+                        <a href="#contact" class="btn">Get in touch</a>
+                        <!-- =================== coming soon =================== <a href="/hu/" class="hu">Magyar</a>  -->
+                    </div>
+                </nav>
+            </div>
+        </header>
 
-  <!-- =================== Hero =================== -->
-  <main id="home" class="hero" role="main">
-    <div class="container hero-grid">
-      <div>
-        <div class="eyebrow">Boutique AI Consultancy</div>
-        <h1>Where insight meets intelligence.</h1>
-        <p class="lead">We help businesses harness the power of AI — thoughtfully, efficiently, and responsibly. From strategy to implementation, we turn your data into decisions and your vision into value.</p>
-        <div class="hero-cta">
-          <a class="btn" href="#contact">Book a consultation</a>
-          <a class="btn btn-ghost" href="#services">Explore services</a>
-        </div>
-      </div>
-      <div class="hero-media">
-        <!-- Replace with your own image → ideally 1600×1100 -->
-        <img src="assets/hero.png" alt="Abstract data visualization as a placeholder graphic" loading="eager" />
-        <div class="media-badge">On‑prem inference • Cloud deployments • Ethical AI</div>
-      </div>
-    </div>
-  </main>
+        <!-- =================== Hero =================== -->
+        <main id="home" class="hero" role="main">
+            <div class="container hero-grid">
+                <div>
+                    <div class="eyebrow">Boutique AI Consultancy</div>
+                    <h1>Where insight meets intelligence.</h1>
+                    <p class="lead">
+                        We help businesses harness the power of AI —
+                        thoughtfully, efficiently, and responsibly. From
+                        strategy to implementation, we turn your data into
+                        decisions and your vision into value.
+                    </p>
+                    <div class="hero-cta">
+                        <a class="btn" href="#contact">Book a consultation</a>
+                        <a class="btn btn-ghost" href="#services"
+                            >Explore services</a
+                        >
+                    </div>
+                </div>
+                <div class="hero-media">
+                    <!-- Replace with your own image → ideally 1600×1100 -->
+                    <img
+                        src="assets/hero.png"
+                        alt="Abstract data visualization as a placeholder graphic"
+                        loading="eager"
+                    />
+                    <div class="media-badge">
+                        On‑prem inference • Cloud deployments • Ethical AI
+                    </div>
+                </div>
+            </div>
+        </main>
 
-  <!-- =================== Logos / Social proof =================== 
+        <!-- =================== Logos / Social proof ===================
   <section aria-label="Client logos">
     <div class="container">
       <div class="card" aria-hidden="true">
@@ -255,172 +691,307 @@
     </div>
   </section> -->
 
-  <!-- =================== About =================== -->
-  <section id="about" aria-labelledby="about-title">
-    <div class="container split">
-      <div>
-        <h2 class="section-title" id="about-title">About Ocure Analytics</h2>
-        <p class="section-lead">Ocure Analytics is a boutique AI consultancy specializing in the practical and ethical application of artificial intelligence. We help organizations identify real opportunities for AI integration — not just experiments, but systems that deliver measurable results.</p>
-        <div class="card" style="margin-top:1rem">
-          <ul>
-            <li>Deep expertise across data architecture, machine learning, and process automation.</li>
-            <li>Tailored solutions that align with business goals and scale over time.</li>
-            <li>Transparent, responsible AI practices with emphasis on reliability and governance.</li>
-          </ul>
+        <!-- =================== About =================== -->
+        <section id="about" aria-labelledby="about-title">
+            <div class="container split">
+                <div>
+                    <h2 class="section-title" id="about-title">
+                        About Ocure Analytics
+                    </h2>
+                    <p class="section-lead">
+                        Ocure Analytics is a boutique AI consultancy
+                        specializing in the practical and ethical application of
+                        artificial intelligence. We help organizations identify
+                        real opportunities for AI integration — not just
+                        experiments, but systems that deliver measurable
+                        results.
+                    </p>
+                    <div class="card" style="margin-top: 1rem">
+                        <ul>
+                            <li>
+                                Deep expertise across data architecture, machine
+                                learning, and process automation.
+                            </li>
+                            <li>
+                                Tailored solutions that align with business
+                                goals and scale over time.
+                            </li>
+                            <li>
+                                Transparent, responsible AI practices with
+                                emphasis on reliability and governance.
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                <aside class="card" aria-label="About image">
+                    <img
+                        src="assets/about.png"
+                        alt="Engineer at workstation — generic placeholder image"
+                    />
+                </aside>
+            </div>
+        </section>
+
+        <!-- =================== Services =================== -->
+        <section id="services" aria-labelledby="services-title">
+            <div class="container">
+                <h2 class="section-title" id="services-title">What we do</h2>
+                <p class="section-lead">
+                    From on‑prem inference systems to cloud‑based deployments —
+                    we design efficient, secure, and maintainable AI
+                    architectures, integrate them with your systems, and enable
+                    your teams to adopt and evolve them.
+                </p>
+
+                <div class="grid" style="margin-top: 1rem">
+                    <article class="service">
+                        <span class="badge">Discovery</span>
+                        <h3>AI Readiness Assessment</h3>
+                        <p>
+                            We analyze workflows, data landscape, and business
+                            objectives to reveal where AI creates measurable
+                            value.
+                        </p>
+                    </article>
+                    <article class="service">
+                        <span class="badge">Architecture</span>
+                        <h3>Solution Design</h3>
+                        <p>
+                            End‑to‑end design of robust systems: on‑prem
+                            inference, hybrid setups, and cloud‑native
+                            deployments.
+                        </p>
+                    </article>
+                    <article class="service">
+                        <span class="badge">Delivery</span>
+                        <h3>Integration & Implementation</h3>
+                        <p>
+                            Model selection, MLOps pipelines, security,
+                            monitoring, and seamless integration with existing
+                            tools.
+                        </p>
+                    </article>
+                    <article class="service">
+                        <span class="badge">Enablement</span>
+                        <h3>Advisory & Training</h3>
+                        <p>
+                            Hands‑on upskilling and governance frameworks so AI
+                            becomes a sustainable organizational capability.
+                        </p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================== Process =================== -->
+        <section id="process" aria-labelledby="process-title">
+            <div class="container">
+                <h2 class="section-title" id="process-title">How we work</h2>
+                <p class="section-lead">
+                    A lean, collaborative approach designed for clarity, speed,
+                    and measurable outcomes.
+                </p>
+
+                <div class="steps" style="margin-top: 1rem">
+                    <div class="step">
+                        <h3>1) Map opportunities</h3>
+                        <p>
+                            Stakeholder interviews, workflow and data audit;
+                            quick wins vs. strategic bets.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <h3>2) Design & validate</h3>
+                        <p>
+                            Architecture blueprints, proof‑of‑concepts, success
+                            metrics, and risk assessment.
+                        </p>
+                    </div>
+                    <div class="step">
+                        <h3>3) Implement & enable</h3>
+                        <p>
+                            Integration, rollout, monitoring, and training —
+                            with a clear path to scale.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- =================== Philosophy =================== -->
+        <section id="philosophy" aria-labelledby="philosophy-title">
+            <div class="container">
+                <h2 class="section-title" id="philosophy-title">
+                    Our philosophy
+                </h2>
+                <blockquote>
+                    <p>
+                        We believe AI is not about replacing people — it’s about
+                        augmenting human insight. Our mission is to make
+                        artificial intelligence accessible, transparent, and
+                        genuinely useful for every organization we work with.
+                    </p>
+                </blockquote>
+            </div>
+        </section>
+
+        <!-- =================== CTA =================== -->
+        <section id="contact" aria-labelledby="contact-title">
+            <div class="container">
+                <div class="cta">
+                    <h2 class="section-title" id="contact-title">
+                        Let’s build your AI advantage
+                    </h2>
+                    <p class="section-lead">
+                        Tell us where you want to create value — we’ll help you
+                        get there.
+                    </p>
+                    <p style="margin-top: 1rem">
+                        <a
+                            class="btn"
+                            href="mailto:hello@ocureanalytics.com"
+                            aria-label="Email Ocure Analytics"
+                            >Email us</a
+                        >
+                        <span
+                            style="
+                                display: inline-block;
+                                margin: 0 0.6rem;
+                                color: var(--text-dim);
+                            "
+                            >or</span
+                        >
+                        <!-- not yet -- <a class="btn btn-ghost" href="#" aria-label="Schedule a call">Schedule a call</a>  -->
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Cookie banner -->
+        <div
+            class="cookie-banner"
+            id="cookieBanner"
+            role="dialog"
+            aria-live="polite"
+        >
+            <div style="flex: 1; min-width: 240px">
+                <strong>Cookies on this site</strong>
+                <p style="margin: 0.2rem 0 0; color: var(--text-dim)">
+                    We use essential cookies. With your consent, we may also use
+                    analytics and marketing cookies to improve your experience.
+                </p>
+            </div>
+            <div class="cookie-actions">
+                <button class="btn secondary" id="rejectAll">
+                    Reject non‑essential
+                </button>
+                <button class="btn" id="acceptAll">Accept all</button>
+                <button class="btn link" id="manage">Manage</button>
+            </div>
         </div>
-      </div>
-      <aside class="card" aria-label="About image">
-        <img src="assets/about.png" alt="Engineer at workstation — generic placeholder image" />
-      </aside>
-    </div>
-  </section>
 
-  <!-- =================== Services =================== -->
-  <section id="services" aria-labelledby="services-title">
-    <div class="container">
-      <h2 class="section-title" id="services-title">What we do</h2>
-      <p class="section-lead">From on‑prem inference systems to cloud‑based deployments — we design efficient, secure, and maintainable AI architectures, integrate them with your systems, and enable your teams to adopt and evolve them.</p>
-
-      <div class="grid" style="margin-top:1rem">
-        <article class="service">
-          <span class="badge">Discovery</span>
-          <h3>AI Readiness Assessment</h3>
-          <p>We analyze workflows, data landscape, and business objectives to reveal where AI creates measurable value.</p>
-        </article>
-        <article class="service">
-          <span class="badge">Architecture</span>
-          <h3>Solution Design</h3>
-          <p>End‑to‑end design of robust systems: on‑prem inference, hybrid setups, and cloud‑native deployments.</p>
-        </article>
-        <article class="service">
-          <span class="badge">Delivery</span>
-          <h3>Integration & Implementation</h3>
-          <p>Model selection, MLOps pipelines, security, monitoring, and seamless integration with existing tools.</p>
-        </article>
-        <article class="service">
-          <span class="badge">Enablement</span>
-          <h3>Advisory & Training</h3>
-          <p>Hands‑on upskilling and governance frameworks so AI becomes a sustainable organizational capability.</p>
-        </article>
-      </div>
-    </div>
-  </section>
-
-  <!-- =================== Process =================== -->
-  <section id="process" aria-labelledby="process-title">
-    <div class="container">
-      <h2 class="section-title" id="process-title">How we work</h2>
-      <p class="section-lead">A lean, collaborative approach designed for clarity, speed, and measurable outcomes.</p>
-
-      <div class="steps" style="margin-top:1rem">
-        <div class="step">
-          <h3>1) Map opportunities</h3>
-          <p>Stakeholder interviews, workflow and data audit; quick wins vs. strategic bets.</p>
+        <!-- Preferences modal -->
+        <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"></div>
+        <div
+            class="modal"
+            id="prefsModal"
+            role="dialog"
+            aria-modal="true"
+            aria-labelledby="prefsTitle"
+        >
+            <h3 id="prefsTitle">Cookie preferences</h3>
+            <p style="color: var(--text-dim)">
+                Essential cookies are always on to keep the site working. You
+                can choose the rest.
+            </p>
+            <div class="switch">
+                <input type="checkbox" id="analyticsOpt" /><label
+                    for="analyticsOpt"
+                    >Analytics</label
+                >
+            </div>
+            <div class="switch">
+                <input type="checkbox" id="marketingOpt" /><label
+                    for="marketingOpt"
+                    >Marketing</label
+                >
+            </div>
+            <div
+                style="
+                    margin-top: 1rem;
+                    display: flex;
+                    gap: 0.5rem;
+                    justify-content: flex-end;
+                "
+            >
+                <button class="btn secondary" id="cancelPrefs">Cancel</button>
+                <button class="btn" id="savePrefs">Save</button>
+            </div>
         </div>
-        <div class="step">
-          <h3>2) Design & validate</h3>
-          <p>Architecture blueprints, proof‑of‑concepts, success metrics, and risk assessment.</p>
-        </div>
-        <div class="step">
-          <h3>3) Implement & enable</h3>
-          <p>Integration, rollout, monitoring, and training — with a clear path to scale.</p>
-        </div>
-      </div>
-    </div>
-  </section>
 
-  <!-- =================== Philosophy =================== -->
-  <section id="philosophy" aria-labelledby="philosophy-title">
-    <div class="container">
-      <h2 class="section-title" id="philosophy-title">Our philosophy</h2>
-      <blockquote>
-        <p>We believe AI is not about replacing people — it’s about augmenting human insight. Our mission is to make artificial intelligence accessible, transparent, and genuinely useful for every organization we work with.</p>
-      </blockquote>
-    </div>
-  </section>
+        <!-- =================== Footer =================== -->
+        <footer role="contentinfo">
+            <div class="container foot-grid">
+                <div>
+                    <img
+                        src="assets/logo2.jpg"
+                        alt="Ocure Analytics logo banner"
+                        style="width: 11em"
+                    />
+                    <p style="margin: 0.4rem 0 0">
+                        <strong>Build your AI advantage</strong>
+                    </p>
+                </div>
+                <div>
+                    <div><a href="#about">About</a></div>
+                    <div><a href="#services">Services</a></div>
+                    <div><a href="#process">Process</a></div>
+                    <div>
+                        <a href="#" data-open-cookie-prefs
+                            >Cookie preferences</a
+                        >
+                    </div>
+                </div>
+                <div>
+                    <div>
+                        <a href="mailto:hello@ocureanalytics.com"
+                            >hello@ocureanalytics.com</a
+                        >
+                    </div>
+                    <div>
+                        <a href="https://tablettavizsgalat.hu"
+                            >Publications: tablettavizsgalat.hu</a
+                        >
+                    </div>
+                    <div><a href="privacy/">Privacy</a></div>
+                </div>
+            </div>
+            <div class="container" style="margin-top: 1rem; font-size: 0.85rem">
+                © <span id="y"></span> Ocure Analytics. All rights reserved.
+            </div>
+        </footer>
 
-  <!-- =================== CTA =================== -->
-  <section id="contact" aria-labelledby="contact-title">
-    <div class="container">
-      <div class="cta">
-        <h2 class="section-title" id="contact-title">Let’s build your AI advantage</h2>
-        <p class="section-lead">Tell us where you want to create value — we’ll help you get there.</p>
-        <p style="margin-top:1rem">
-          <a class="btn" href="mailto:hello@ocureanalytics.com" aria-label="Email Ocure Analytics">Email us</a>
-          <span style="display:inline-block; margin: 0 .6rem; color: var(--text-dim)">or</span>
-           <!-- not yet -- <a class="btn btn-ghost" href="#" aria-label="Schedule a call">Schedule a call</a>  -->
-        </p>
-      </div>
-    </div>
-  </section>
+        <script>
+            // Mobile menu toggle
+            const menu = document.getElementById("menu");
+            const toggle = document.getElementById("menuToggle");
+            toggle?.addEventListener("click", () => {
+                const open = menu.classList.toggle("open");
+                toggle.setAttribute("aria-expanded", String(open));
+            });
 
-    <!-- Cookie banner -->
-  <div class="cookie-banner" id="cookieBanner" role="dialog" aria-live="polite">
-    <div style="flex:1;min-width:240px">
-      <strong>Cookies on this site</strong>
-      <p style="margin:.2rem 0 0;color:var(--text-dim)">We use essential cookies. With your consent, we may also use analytics and marketing cookies to improve your experience.</p>
-    </div>
-    <div class="cookie-actions">
-      <button class="btn secondary" id="rejectAll">Reject non‑essential</button>
-      <button class="btn" id="acceptAll">Accept all</button>
-      <button class="btn link" id="manage">Manage</button>
-    </div>
-  </div>
+            // Close menu on link click (mobile)
+            menu?.querySelectorAll("a").forEach((a) =>
+                a.addEventListener("click", () => {
+                    if (menu.classList.contains("open")) {
+                        menu.classList.remove("open");
+                        toggle.setAttribute("aria-expanded", "false");
+                    }
+                }),
+            );
 
-  <!-- Preferences modal -->
-  <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"></div>
-  <div class="modal" id="prefsModal" role="dialog" aria-modal="true" aria-labelledby="prefsTitle">
-    <h3 id="prefsTitle">Cookie preferences</h3>
-    <p style="color:var(--text-dim)">Essential cookies are always on to keep the site working. You can choose the rest.</p>
-    <div class="switch"><input type="checkbox" id="analyticsOpt" /><label for="analyticsOpt">Analytics</label></div>
-    <div class="switch"><input type="checkbox" id="marketingOpt" /><label for="marketingOpt">Marketing</label></div>
-    <div style="margin-top:1rem;display:flex;gap:.5rem;justify-content:flex-end">
-      <button class="btn secondary" id="cancelPrefs">Cancel</button>
-      <button class="btn" id="savePrefs">Save</button>
-    </div>
-  </div>
-
-  <!-- =================== Footer =================== -->
-  <footer role="contentinfo">
-    <div class="container foot-grid">
-      <div>
-        <img src="assets/logo2.jpg" alt="Ocure Analytics logo banner" style="width: 11em" />
-        <p style="margin:.4rem 0 0"><strong>Build your AI advantage</strong></p>
-      </div>
-      <div>
-        <div><a href="#about">About</a></div>
-        <div><a href="#services">Services</a></div>
-        <div><a href="#process">Process</a></div>
-        <div><a href="#" data-open-cookie-prefs>Cookie preferences</a></div>
-      </div>
-      <div>
-        <div><a href="mailto:hello@ocureanalytics.com">hello@ocureanalytics.com</a></div>
-        <div><a href="privacy/">Privacy</a></div>
-      </div>
-    </div>
-    <div class="container" style="margin-top:1rem; font-size:.85rem">© <span id="y"></span> Ocure Analytics. All rights reserved.</div>
-  </footer>
-
-  <script>
-    // Mobile menu toggle
-    const menu = document.getElementById('menu');
-    const toggle = document.getElementById('menuToggle');
-    toggle?.addEventListener('click', () => {
-      const open = menu.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', String(open));
-    });
-
-    // Close menu on link click (mobile)
-    menu?.querySelectorAll('a').forEach(a => a.addEventListener('click', () => {
-      if (menu.classList.contains('open')) {
-        menu.classList.remove('open');
-        toggle.setAttribute('aria-expanded', 'false');
-      }
-    }));
-
-    // Year
-    document.getElementById('y').textContent = new Date().getFullYear();
-
-  </script>
-</body>
+            // Year
+            document.getElementById("y").textContent = new Date().getFullYear();
+        </script>
+    </body>
 </html>
