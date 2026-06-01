@@ -197,13 +197,35 @@
     const tabs = document.querySelectorAll('.lang-switch .pill');
     const en = document.getElementById('policy-en');
     const hu = document.getElementById('policy-hu');
-    tabs.forEach(t=>t.addEventListener('click',()=>{
-      tabs.forEach(x=>x.classList.remove('active'));
-      t.classList.add('active');
-      const lang = t.dataset.lang;
+    function setLang(lang){
+      if(lang!=='hu') lang='en';
+      tabs.forEach(x=>{
+        const on = x.dataset.lang===lang;
+        x.classList.toggle('active', on);
+        x.setAttribute('aria-selected', String(on));
+      });
       en.style.display = lang==='en' ? '' : 'none';
       hu.style.display = lang==='hu' ? '' : 'none';
+      document.documentElement.lang = lang;
+    }
+    tabs.forEach(t=>t.addEventListener('click',()=>{
+      const lang = t.dataset.lang;
+      setLang(lang);
+      try { localStorage.setItem('ocure.lang', lang); } catch {}
     }));
+
+    // Honour the site-wide language choice (selector on the homepage),
+    // an explicit ?lang= override, or the browser/system language.
+    (function initLang(){
+      const q = (new URLSearchParams(location.search).get('lang')||'').toLowerCase();
+      if(q==='en'||q==='hu') return setLang(q);
+      let stored=null;
+      try { stored = localStorage.getItem('ocure.lang'); } catch {}
+      if(stored==='en'||stored==='hu') return setLang(stored);
+      const navLangs = navigator.languages || [navigator.language||''];
+      if(navLangs.some(l=>(l||'').toLowerCase().startsWith('hu'))) return setLang('hu');
+      setLang('en');
+    })();
     document.getElementById('openPrefsEn').onclick = () => document.getElementById('manage').click();
     document.getElementById('openPrefsHu').onclick = () => document.getElementById('manage').click();
 

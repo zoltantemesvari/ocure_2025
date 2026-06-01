@@ -3,10 +3,12 @@
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Ocure Analytics — AI Consulting</title>
+        <title data-i18n="meta.title">Ocure Analytics — AI Consulting</title>
         <meta
             name="description"
-            content="Ocure Analytics is a boutique AI consultancy helping companies find, design, and implement high‑value AI solutions — from on‑prem inference to cloud deployments."
+            data-i18n-attr="content"
+            data-i18n="meta.desc"
+            content="Ocure Analytics is a boutique AI consultancy helping companies find, design, and implement high‑value AI solutions — from on‑prem inference to cloud deployments. Official representative for Abstractor and Epher."
         />
         <meta name="theme-color" content="#0f172a" />
         <link rel="icon" href="favicon.png" />
@@ -96,6 +98,13 @@
                 width: min(1100px, 92vw);
                 margin-inline: auto;
             }
+            .eyebrow {
+                text-transform: uppercase;
+                letter-spacing: 0.16em;
+                font-weight: 700;
+                color: var(--accent);
+                font-size: 0.85rem;
+            }
 
             /* ============== Header ============== */
             .header {
@@ -116,7 +125,8 @@
                 display: flex;
                 align-items: center;
                 justify-content: space-between;
-                padding: 0.8rem 0;
+                padding: 0.6rem 0;
+                gap: 1rem;
             }
             .brand {
                 display: flex;
@@ -125,23 +135,17 @@
                 font-weight: 700;
                 letter-spacing: 0.2px;
                 color: var(--text);
+                flex-shrink: 0;
             }
-            .brand-mark {
-                width: 28px;
-                height: 28px;
-                border-radius: 8px;
-                background: linear-gradient(
-                    135deg,
-                    var(--accent) 10%,
-                    var(--ok) 90%
-                );
-                box-shadow: 0 2px 10px
-                    color-mix(in oklab, var(--accent) 30%, transparent);
+            .nav-right {
+                display: flex;
+                align-items: center;
+                gap: 0.6rem;
             }
 
             .nav-links {
                 display: flex;
-                gap: 1rem;
+                gap: 0.4rem;
                 align-items: center;
             }
             .nav-links a {
@@ -152,6 +156,36 @@
             }
             .nav-links a:hover {
                 background: color-mix(in oklab, var(--muted) 50%, transparent);
+                color: var(--text);
+            }
+
+            /* Language switcher */
+            .lang-switch {
+                display: inline-flex;
+                align-items: center;
+                border: 1px solid
+                    color-mix(in oklab, var(--muted) 65%, transparent);
+                border-radius: 0.7rem;
+                overflow: hidden;
+                flex-shrink: 0;
+            }
+            .lang-switch button {
+                appearance: none;
+                border: none;
+                background: transparent;
+                color: var(--text-dim);
+                font: inherit;
+                font-weight: 600;
+                font-size: 0.85rem;
+                padding: 0.4rem 0.65rem;
+                cursor: pointer;
+                line-height: 1;
+            }
+            .lang-switch button[aria-pressed="true"] {
+                background: color-mix(in oklab, var(--accent) 28%, transparent);
+                color: var(--text);
+            }
+            .lang-switch button:hover {
                 color: var(--text);
             }
 
@@ -182,24 +216,6 @@
             .btn:active {
                 transform: translateY(0);
             }
-            .hu {
-                background-image: url("/assets/hu.png");
-                background-size: cover; /* Scales the image to cover the button */
-                background-position: center; /* Centers the image */
-                background-repeat: no-repeat; /* Prevents repeating */
-                display: inline-flex;
-                align-items: center;
-                justify-content: center;
-                gap: 0.5rem;
-                padding: 0.8rem 1rem;
-                border-radius: 0.8rem;
-                font-weight: 600;
-                border: 1px solid
-                    color-mix(in oklab, var(--accent) 35%, transparent);
-                color: var(--text);
-                box-shadow: 0 8px 24px -12px
-                    color-mix(in oklab, var(--accent) 45%, transparent);
-            }
 
             /* Mobile menu */
             .menu-toggle {
@@ -208,21 +224,25 @@
                 border: none;
                 color: var(--text);
                 font-size: 1.4rem;
+                cursor: pointer;
             }
-            @media (max-width: 900px) {
+            @media (max-width: 980px) {
                 .nav-links {
                     display: none;
                     position: absolute;
-                    inset: auto 1rem 1rem 1rem;
+                    inset: auto 1rem auto 1rem;
+                    top: 100%;
+                    margin-top: 0.5rem;
                     flex-direction: column;
+                    align-items: stretch;
                     background: var(--surface);
                     border: 1px solid var(--muted);
-                    padding: 1rem;
+                    padding: 0.75rem;
                     border-radius: 1rem;
+                    box-shadow: 0 24px 60px -30px rgba(0, 0, 0, 0.6);
                 }
                 .nav-links.open {
                     display: flex;
-                    position: sticky;
                 }
                 .menu-toggle {
                     display: inline-flex;
@@ -247,13 +267,6 @@
                 }
             }
 
-            .eyebrow {
-                text-transform: uppercase;
-                letter-spacing: 0.16em;
-                font-weight: 700;
-                color: var(--accent);
-                font-size: 0.85rem;
-            }
             h1 {
                 margin: 0.4rem 0 1rem;
                 font-weight: 800;
@@ -305,24 +318,6 @@
                 padding: 0.6rem 0.8rem;
                 border-radius: 0.8rem;
                 font-size: 0.9rem;
-            }
-
-            /* ============== Logos / social proof ============== */
-            .logo-row {
-                display: grid;
-                grid-template-columns: repeat(5, 1fr);
-                gap: 1.2rem;
-                align-items: center;
-                opacity: 0.85;
-            }
-            .logo {
-                height: 28px;
-                filter: contrast(0.85) grayscale(1) opacity(0.8);
-            }
-            @media (max-width: 800px) {
-                .logo-row {
-                    grid-template-columns: repeat(3, 1fr);
-                }
             }
 
             /* ============== Sections ============== */
@@ -409,6 +404,92 @@
                 color: var(--text-dim);
                 border: 1px solid
                     color-mix(in oklab, var(--muted) 65%, transparent);
+            }
+            .badge.accent {
+                background: color-mix(in oklab, var(--accent) 22%, transparent);
+                border-color: color-mix(
+                    in oklab,
+                    var(--accent) 45%,
+                    transparent
+                );
+                color: var(--text);
+            }
+
+            /* Products / Representation */
+            .products {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 1.4rem;
+                margin-top: 1.2rem;
+            }
+            @media (max-width: 900px) {
+                .products {
+                    grid-template-columns: 1fr;
+                }
+            }
+            .product {
+                display: flex;
+                flex-direction: column;
+                gap: 0.6rem;
+                padding: 1.5rem;
+                border-radius: 1.1rem;
+                border: 1px solid
+                    color-mix(in oklab, var(--muted) 55%, transparent);
+                background: color-mix(
+                    in oklab,
+                    var(--surface) 72%,
+                    transparent
+                );
+                box-shadow: 0 20px 60px -35px
+                    color-mix(in oklab, var(--muted) 75%, transparent);
+            }
+            .product-head {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.8rem;
+                flex-wrap: wrap;
+            }
+            .product-name {
+                font-size: 1.35rem;
+                font-weight: 800;
+                margin: 0;
+            }
+            .product-name .dot {
+                color: var(--accent-strong);
+            }
+            .product p {
+                color: var(--text-dim);
+                margin: 0;
+            }
+            .product-tagline {
+                font-style: italic;
+                color: var(--accent);
+                font-size: 1.02rem;
+                margin: 0;
+            }
+            .product-tags {
+                display: flex;
+                flex-wrap: wrap;
+                gap: 0.45rem;
+                margin-top: 0.2rem;
+            }
+            .product-foot {
+                margin-top: auto;
+                padding-top: 0.4rem;
+            }
+            .product-link {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.4rem;
+                font-weight: 600;
+            }
+            .product-link::after {
+                content: "→";
+                transition: transform 0.15s ease;
+            }
+            .product-link:hover::after {
+                transform: translateX(3px);
             }
 
             /* Process */
@@ -518,95 +599,6 @@
                     animation: none !important;
                 }
             }
-
-            /* Cookie banner */
-            .cookie-banner {
-                position: fixed;
-                inset: auto 1rem 1rem 1rem;
-                z-index: 1000;
-                display: none;
-                gap: 0.9rem;
-                align-items: center;
-                justify-content: space-between;
-                flex-wrap: wrap;
-                background: color-mix(
-                    in oklab,
-                    var(--surface) 92%,
-                    transparent
-                );
-                border: 1px solid
-                    color-mix(in oklab, var(--muted) 55%, transparent);
-                border-radius: 1rem;
-                padding: 1rem;
-            }
-            .cookie-actions {
-                display: flex;
-                gap: 0.5rem;
-                flex-wrap: wrap;
-            }
-            .btn {
-                display: inline-flex;
-                align-items: center;
-                gap: 0.4rem;
-                padding: 0.55rem 0.8rem;
-                border-radius: 0.6rem;
-                border: 1px solid
-                    color-mix(in oklab, var(--accent) 35%, transparent);
-                background: linear-gradient(
-                    180deg,
-                    color-mix(in oklab, var(--accent) 18%, transparent) 0%,
-                    transparent
-                );
-                color: var(--text);
-                font-weight: 600;
-            }
-            .btn.secondary {
-                border-color: color-mix(
-                    in oklab,
-                    var(--muted) 60%,
-                    transparent
-                );
-                background: transparent;
-                color: var(--text-dim);
-            }
-            .btn.link {
-                border: none;
-                background: none;
-                padding: 0.2rem 0.3rem;
-            }
-
-            /* Preferences modal */
-            .modal-backdrop {
-                position: fixed;
-                inset: 0;
-                background: color-mix(in oklab, #000 60%, transparent);
-                display: none;
-                z-index: 1001;
-            }
-            .modal {
-                position: fixed;
-                inset: 50% auto auto 50%;
-                transform: translate(-50%, -50%);
-                width: min(680px, 92vw);
-                display: none;
-                background: var(--surface);
-                border: 1px solid var(--muted);
-                border-radius: 1rem;
-                padding: 1rem;
-                z-index: 1002;
-            }
-            .modal h3 {
-                margin: 0.2rem 0 0.6rem;
-            }
-            .switch {
-                display: flex;
-                align-items: center;
-                gap: 0.5rem;
-            }
-            .switch input {
-                width: 1.2rem;
-                height: 1.2rem;
-            }
         </style>
         <link href="assets/themes.css" rel="stylesheet" />
     </head>
@@ -618,10 +610,53 @@
                     <img
                         src="assets/logo.png"
                         alt="Ocure Analytics logo"
-                        style="width: 12em; margin: 1em"
+                        style="width: 11em; margin: 0.6em 0.4em"
                     />
                 </a>
-                <nav aria-label="Primary">
+                <div class="nav-right">
+                    <nav aria-label="Primary">
+                        <div class="nav-links" id="menu">
+                            <a href="#about" data-i18n="nav.about">About</a>
+                            <a href="#services" data-i18n="nav.services"
+                                >Services</a
+                            >
+                            <a href="#products" data-i18n="nav.products"
+                                >Products</a
+                            >
+                            <a href="#process" data-i18n="nav.process"
+                                >Process</a
+                            >
+                            <a href="#philosophy" data-i18n="nav.philosophy"
+                                >Philosophy</a
+                            >
+                            <a
+                                href="#contact"
+                                class="btn"
+                                data-i18n="nav.contact"
+                                >Get in touch</a
+                            >
+                        </div>
+                    </nav>
+                    <div
+                        class="lang-switch"
+                        role="group"
+                        aria-label="Language selector"
+                    >
+                        <button
+                            type="button"
+                            data-lang="en"
+                            aria-pressed="true"
+                        >
+                            EN
+                        </button>
+                        <button
+                            type="button"
+                            data-lang="hu"
+                            aria-pressed="false"
+                        >
+                            HU
+                        </button>
+                    </div>
                     <button
                         class="menu-toggle"
                         aria-controls="menu"
@@ -631,15 +666,7 @@
                     >
                         ☰
                     </button>
-                    <div class="nav-links" id="menu">
-                        <a href="#about">About</a>
-                        <a href="#services">Services</a>
-                        <a href="#process">Process</a>
-                        <a href="#philosophy">Philosophy</a>
-                        <a href="#contact" class="btn">Get in touch</a>
-                        <!-- =================== coming soon =================== <a href="/hu/" class="hu">Magyar</a>  -->
-                    </div>
-                </nav>
+                </div>
             </div>
         </header>
 
@@ -647,58 +674,55 @@
         <main id="home" class="hero" role="main">
             <div class="container hero-grid">
                 <div>
-                    <div class="eyebrow">Boutique AI Consultancy</div>
-                    <h1>Where insight meets intelligence.</h1>
-                    <p class="lead">
+                    <div class="eyebrow" data-i18n="hero.eyebrow">
+                        Boutique AI Consultancy
+                    </div>
+                    <h1 data-i18n="hero.title">
+                        Where insight meets intelligence.
+                    </h1>
+                    <p class="lead" data-i18n="hero.lead">
                         We help businesses harness the power of AI —
                         thoughtfully, efficiently, and responsibly. From
                         strategy to implementation, we turn your data into
                         decisions and your vision into value.
                     </p>
                     <div class="hero-cta">
-                        <a class="btn" href="#contact">Book a consultation</a>
-                        <a class="btn btn-ghost" href="#services"
+                        <a class="btn" href="#contact" data-i18n="hero.cta1"
+                            >Book a consultation</a
+                        >
+                        <a
+                            class="btn btn-ghost"
+                            href="#services"
+                            data-i18n="hero.cta2"
                             >Explore services</a
                         >
                     </div>
                 </div>
                 <div class="hero-media">
-                    <!-- Replace with your own image → ideally 1600×1100 -->
                     <img
                         src="assets/hero.png"
-                        alt="Abstract data visualization as a placeholder graphic"
+                        alt="Abstract data visualization"
                         loading="eager"
                     />
-                    <div class="media-badge">
+                    <div class="media-badge" data-i18n="hero.badge">
                         On‑prem inference • Cloud deployments • Ethical AI
                     </div>
                 </div>
             </div>
         </main>
 
-        <!-- =================== Logos / Social proof ===================
-  <section aria-label="Client logos">
-    <div class="container">
-      <div class="card" aria-hidden="true">
-        <div class="logo-row">
-          <img class="logo" src="https://dummyimage.com/160x40/aaa/fff.png&text=CLIENT+1" alt="Client logo placeholder 1" />
-          <img class="logo" src="https://dummyimage.com/160x40/aaa/fff.png&text=CLIENT+2" alt="Client logo placeholder 2" />
-          <img class="logo" src="https://dummyimage.com/160x40/aaa/fff.png&text=CLIENT+3" alt="Client logo placeholder 3" />
-          <img class="logo" src="https://dummyimage.com/160x40/aaa/fff.png&text=CLIENT+4" alt="Client logo placeholder 4" />
-          <img class="logo" src="https://dummyimage.com/160x40/aaa/fff.png&text=CLIENT+5" alt="Client logo placeholder 5" />
-        </div>
-      </div>
-    </div>
-  </section> -->
-
         <!-- =================== About =================== -->
         <section id="about" aria-labelledby="about-title">
             <div class="container split">
                 <div>
-                    <h2 class="section-title" id="about-title">
+                    <h2
+                        class="section-title"
+                        id="about-title"
+                        data-i18n="about.title"
+                    >
                         About Ocure Analytics
                     </h2>
-                    <p class="section-lead">
+                    <p class="section-lead" data-i18n="about.lead">
                         Ocure Analytics is a boutique AI consultancy
                         specializing in the practical and ethical application of
                         artificial intelligence. We help organizations identify
@@ -708,15 +732,15 @@
                     </p>
                     <div class="card" style="margin-top: 1rem">
                         <ul>
-                            <li>
+                            <li data-i18n="about.li1">
                                 Deep expertise across data architecture, machine
                                 learning, and process automation.
                             </li>
-                            <li>
+                            <li data-i18n="about.li2">
                                 Tailored solutions that align with business
                                 goals and scale over time.
                             </li>
-                            <li>
+                            <li data-i18n="about.li3">
                                 Transparent, responsible AI practices with
                                 emphasis on reliability and governance.
                             </li>
@@ -724,10 +748,7 @@
                     </div>
                 </div>
                 <aside class="card" aria-label="About image">
-                    <img
-                        src="assets/about.png"
-                        alt="Engineer at workstation — generic placeholder image"
-                    />
+                    <img src="assets/about.png" alt="Engineer at workstation" />
                 </aside>
             </div>
         </section>
@@ -735,8 +756,14 @@
         <!-- =================== Services =================== -->
         <section id="services" aria-labelledby="services-title">
             <div class="container">
-                <h2 class="section-title" id="services-title">What we do</h2>
-                <p class="section-lead">
+                <h2
+                    class="section-title"
+                    id="services-title"
+                    data-i18n="services.title"
+                >
+                    What we do
+                </h2>
+                <p class="section-lead" data-i18n="services.lead">
                     From on‑prem inference systems to cloud‑based deployments —
                     we design efficient, secure, and maintainable AI
                     architectures, integrate them with your systems, and enable
@@ -745,36 +772,50 @@
 
                 <div class="grid" style="margin-top: 1rem">
                     <article class="service">
-                        <span class="badge">Discovery</span>
-                        <h3>AI Readiness Assessment</h3>
-                        <p>
+                        <span class="badge" data-i18n="services.s1.badge"
+                            >Discovery</span
+                        >
+                        <h3 data-i18n="services.s1.title">
+                            AI Readiness Assessment
+                        </h3>
+                        <p data-i18n="services.s1.body">
                             We analyze workflows, data landscape, and business
                             objectives to reveal where AI creates measurable
                             value.
                         </p>
                     </article>
                     <article class="service">
-                        <span class="badge">Architecture</span>
-                        <h3>Solution Design</h3>
-                        <p>
+                        <span class="badge" data-i18n="services.s2.badge"
+                            >Architecture</span
+                        >
+                        <h3 data-i18n="services.s2.title">Solution Design</h3>
+                        <p data-i18n="services.s2.body">
                             End‑to‑end design of robust systems: on‑prem
                             inference, hybrid setups, and cloud‑native
                             deployments.
                         </p>
                     </article>
                     <article class="service">
-                        <span class="badge">Delivery</span>
-                        <h3>Integration & Implementation</h3>
-                        <p>
+                        <span class="badge" data-i18n="services.s3.badge"
+                            >Delivery</span
+                        >
+                        <h3 data-i18n="services.s3.title">
+                            Integration & Implementation
+                        </h3>
+                        <p data-i18n="services.s3.body">
                             Model selection, MLOps pipelines, security,
                             monitoring, and seamless integration with existing
                             tools.
                         </p>
                     </article>
                     <article class="service">
-                        <span class="badge">Enablement</span>
-                        <h3>Advisory & Training</h3>
-                        <p>
+                        <span class="badge" data-i18n="services.s4.badge"
+                            >Enablement</span
+                        >
+                        <h3 data-i18n="services.s4.title">
+                            Advisory & Training
+                        </h3>
+                        <p data-i18n="services.s4.body">
                             Hands‑on upskilling and governance frameworks so AI
                             becomes a sustainable organizational capability.
                         </p>
@@ -783,33 +824,191 @@
             </div>
         </section>
 
+        <!-- =================== Products / Representation =================== -->
+        <section id="products" aria-labelledby="products-title">
+            <div class="container">
+                <div class="eyebrow" data-i18n="products.eyebrow">
+                    Representation & Consultancy
+                </div>
+                <h2
+                    class="section-title"
+                    id="products-title"
+                    data-i18n="products.title"
+                >
+                    Products we represent
+                </h2>
+                <p class="section-lead" data-i18n="products.lead">
+                    Beyond our own consulting practice, Ocure Analytics is a
+                    representative and consultancy partner for a select group of
+                    European, sovereignty‑first AI products. We help you evaluate
+                    them, choose the right setup, and put them into production —
+                    with hands‑on guidance at every step.
+                </p>
+
+                <div class="products">
+                    <article class="product">
+                        <div class="product-head">
+                            <h3 class="product-name">
+                                Abstractor<span class="dot">.io</span>
+                            </h3>
+                            <span
+                                class="badge accent"
+                                data-i18n="products.abstractor.badge"
+                                >Representation & Consultancy</span
+                            >
+                        </div>
+                        <p
+                            class="product-tagline"
+                            data-i18n="products.abstractor.tagline"
+                        >
+                            “Your process, as a service.”
+                        </p>
+                        <p data-i18n="products.abstractor.body">
+                            Abstractor turns your existing business processes
+                            into running, governed AI services — without code or
+                            prompt engineering. You upload the documents that
+                            describe how the work gets done (SOPs, policies,
+                            templates), show a handful of input/output examples,
+                            and describe the rules in plain language. Abstractor
+                            deploys it as a live service behind an API or
+                            webhook, where every decision is logged with a
+                            signed, tamper‑evident audit trail. It runs on
+                            EU‑sovereign infrastructure — no data leaves the EU —
+                            with compliance tooling for the EU AI Act and GDPR
+                            built in. As a representative and consultancy
+                            partner, Ocure Analytics helps you identify the right
+                            processes, model them, and put them safely into
+                            production.
+                        </p>
+                        <div class="product-tags">
+                            <span class="badge" data-i18n="products.abstractor.f1"
+                                >No code required</span
+                            >
+                            <span class="badge" data-i18n="products.abstractor.f2"
+                                >Auditable by construction</span
+                            >
+                            <span class="badge" data-i18n="products.abstractor.f3"
+                                >EU‑resident hosting</span
+                            >
+                            <span class="badge" data-i18n="products.abstractor.f4"
+                                >Sub‑second decisions</span
+                            >
+                        </div>
+                        <div class="product-foot">
+                            <a
+                                class="product-link"
+                                href="https://abstractor.io/"
+                                target="_blank"
+                                rel="noopener"
+                                data-i18n="products.abstractor.link"
+                                >Visit abstractor.io</a
+                            >
+                        </div>
+                    </article>
+
+                    <article class="product">
+                        <div class="product-head">
+                            <h3 class="product-name">
+                                Epher<span class="dot">.cc</span>
+                            </h3>
+                            <span
+                                class="badge accent"
+                                data-i18n="products.epher.badge"
+                                >Representation & Consultancy</span
+                            >
+                        </div>
+                        <p
+                            class="product-tagline"
+                            data-i18n="products.epher.tagline"
+                        >
+                            “Run state in the EU, and prove it.”
+                        </p>
+                        <p data-i18n="products.epher.body">
+                            Epher Compute Chain — built by GINF Systems on the
+                            open Ephernity protocol — lets you run state in the
+                            EU and prove it, then compute on it deterministically.
+                            It combines two first‑class pillars on one EU‑attested
+                            substrate: tamper‑evident, hardware‑attested storage
+                            with retention from milliseconds to years, and
+                            deterministic workflows whose every call can be
+                            replayed byte‑for‑byte and verified by anyone — even
+                            offline. Operated end‑to‑end by an EU entity with
+                            post‑quantum signing, it is built for regulated
+                            workloads where “who wrote what, when” and “how was
+                            this decided” must stand up to an auditor. Ocure
+                            Analytics provides representation and hands‑on
+                            consultancy to help you choose the right edition and
+                            integrate verifiable storage and compute into your
+                            systems.
+                        </p>
+                        <div class="product-tags">
+                            <span class="badge" data-i18n="products.epher.f1"
+                                >Tamper‑evident storage</span
+                            >
+                            <span class="badge" data-i18n="products.epher.f2"
+                                >Deterministic compute</span
+                            >
+                            <span class="badge" data-i18n="products.epher.f3"
+                                >EU‑sovereign</span
+                            >
+                            <span class="badge" data-i18n="products.epher.f4"
+                                >Post‑quantum signing</span
+                            >
+                        </div>
+                        <div class="product-foot">
+                            <a
+                                class="product-link"
+                                href="https://epher.cc/"
+                                target="_blank"
+                                rel="noopener"
+                                data-i18n="products.epher.link"
+                                >Visit epher.cc</a
+                            >
+                        </div>
+                    </article>
+                </div>
+            </div>
+        </section>
+
         <!-- =================== Process =================== -->
         <section id="process" aria-labelledby="process-title">
             <div class="container">
-                <h2 class="section-title" id="process-title">How we work</h2>
-                <p class="section-lead">
+                <h2
+                    class="section-title"
+                    id="process-title"
+                    data-i18n="process.title"
+                >
+                    How we work
+                </h2>
+                <p class="section-lead" data-i18n="process.lead">
                     A lean, collaborative approach designed for clarity, speed,
                     and measurable outcomes.
                 </p>
 
                 <div class="steps" style="margin-top: 1rem">
                     <div class="step">
-                        <h3>1) Map opportunities</h3>
-                        <p>
+                        <h3 data-i18n="process.p1.title">
+                            1) Map opportunities
+                        </h3>
+                        <p data-i18n="process.p1.body">
                             Stakeholder interviews, workflow and data audit;
                             quick wins vs. strategic bets.
                         </p>
                     </div>
                     <div class="step">
-                        <h3>2) Design & validate</h3>
-                        <p>
+                        <h3 data-i18n="process.p2.title">
+                            2) Design & validate
+                        </h3>
+                        <p data-i18n="process.p2.body">
                             Architecture blueprints, proof‑of‑concepts, success
                             metrics, and risk assessment.
                         </p>
                     </div>
                     <div class="step">
-                        <h3>3) Implement & enable</h3>
-                        <p>
+                        <h3 data-i18n="process.p3.title">
+                            3) Implement & enable
+                        </h3>
+                        <p data-i18n="process.p3.body">
                             Integration, rollout, monitoring, and training —
                             with a clear path to scale.
                         </p>
@@ -821,11 +1020,15 @@
         <!-- =================== Philosophy =================== -->
         <section id="philosophy" aria-labelledby="philosophy-title">
             <div class="container">
-                <h2 class="section-title" id="philosophy-title">
+                <h2
+                    class="section-title"
+                    id="philosophy-title"
+                    data-i18n="philosophy.title"
+                >
                     Our philosophy
                 </h2>
                 <blockquote>
-                    <p>
+                    <p data-i18n="philosophy.quote">
                         We believe AI is not about replacing people — it’s about
                         augmenting human insight. Our mission is to make
                         artificial intelligence accessible, transparent, and
@@ -839,10 +1042,14 @@
         <section id="contact" aria-labelledby="contact-title">
             <div class="container">
                 <div class="cta">
-                    <h2 class="section-title" id="contact-title">
+                    <h2
+                        class="section-title"
+                        id="contact-title"
+                        data-i18n="contact.title"
+                    >
                         Let’s build your AI advantage
                     </h2>
-                    <p class="section-lead">
+                    <p class="section-lead" data-i18n="contact.lead">
                         Tell us where you want to create value — we’ll help you
                         get there.
                     </p>
@@ -851,83 +1058,13 @@
                             class="btn"
                             href="mailto:hello@ocureanalytics.com"
                             aria-label="Email Ocure Analytics"
+                            data-i18n="contact.email"
                             >Email us</a
                         >
-                        <span
-                            style="
-                                display: inline-block;
-                                margin: 0 0.6rem;
-                                color: var(--text-dim);
-                            "
-                            >or</span
-                        >
-                        <!-- not yet -- <a class="btn btn-ghost" href="#" aria-label="Schedule a call">Schedule a call</a>  -->
                     </p>
                 </div>
             </div>
         </section>
-
-        <!-- Cookie banner -->
-        <div
-            class="cookie-banner"
-            id="cookieBanner"
-            role="dialog"
-            aria-live="polite"
-        >
-            <div style="flex: 1; min-width: 240px">
-                <strong>Cookies on this site</strong>
-                <p style="margin: 0.2rem 0 0; color: var(--text-dim)">
-                    We use essential cookies. With your consent, we may also use
-                    analytics and marketing cookies to improve your experience.
-                </p>
-            </div>
-            <div class="cookie-actions">
-                <button class="btn secondary" id="rejectAll">
-                    Reject non‑essential
-                </button>
-                <button class="btn" id="acceptAll">Accept all</button>
-                <button class="btn link" id="manage">Manage</button>
-            </div>
-        </div>
-
-        <!-- Preferences modal -->
-        <div class="modal-backdrop" id="modalBackdrop" aria-hidden="true"></div>
-        <div
-            class="modal"
-            id="prefsModal"
-            role="dialog"
-            aria-modal="true"
-            aria-labelledby="prefsTitle"
-        >
-            <h3 id="prefsTitle">Cookie preferences</h3>
-            <p style="color: var(--text-dim)">
-                Essential cookies are always on to keep the site working. You
-                can choose the rest.
-            </p>
-            <div class="switch">
-                <input type="checkbox" id="analyticsOpt" /><label
-                    for="analyticsOpt"
-                    >Analytics</label
-                >
-            </div>
-            <div class="switch">
-                <input type="checkbox" id="marketingOpt" /><label
-                    for="marketingOpt"
-                    >Marketing</label
-                >
-            </div>
-            <div
-                style="
-                    margin-top: 1rem;
-                    display: flex;
-                    gap: 0.5rem;
-                    justify-content: flex-end;
-                "
-            >
-                <button class="btn secondary" id="cancelPrefs">Cancel</button>
-                <button class="btn" id="savePrefs">Save</button>
-            </div>
-        </div>
 
         <!-- =================== Footer =================== -->
         <footer role="contentinfo">
@@ -939,15 +1076,27 @@
                         style="width: 11em"
                     />
                     <p style="margin: 0.4rem 0 0">
-                        <strong>Build your AI advantage</strong>
+                        <strong data-i18n="footer.tagline"
+                            >Build your AI advantage</strong
+                        >
                     </p>
                 </div>
                 <div>
-                    <div><a href="#about">About</a></div>
-                    <div><a href="#services">Services</a></div>
-                    <div><a href="#process">Process</a></div>
+                    <div><a href="#about" data-i18n="nav.about">About</a></div>
                     <div>
-                        <a href="#" data-open-cookie-prefs
+                        <a href="#services" data-i18n="nav.services">Services</a>
+                    </div>
+                    <div>
+                        <a href="#products" data-i18n="nav.products">Products</a>
+                    </div>
+                    <div>
+                        <a href="#process" data-i18n="nav.process">Process</a>
+                    </div>
+                    <div>
+                        <a
+                            href="#"
+                            data-open-cookie-prefs
+                            data-i18n="footer.cookies"
                             >Cookie preferences</a
                         >
                     </div>
@@ -959,19 +1108,276 @@
                         >
                     </div>
                     <div>
-                        <a href="https://tablettavizsgalat.hu"
+                        <a
+                            href="https://tablettavizsgalat.hu"
+                            data-i18n="footer.publications"
                             >Publications: tablettavizsgalat.hu</a
                         >
                     </div>
-                    <div><a href="privacy/">Privacy</a></div>
+                    <div>
+                        <a href="privacy/" data-i18n="footer.privacy">Privacy</a>
+                    </div>
                 </div>
             </div>
             <div class="container" style="margin-top: 1rem; font-size: 0.85rem">
-                © <span id="y"></span> Ocure Analytics. All rights reserved.
+                © <span id="y"></span>
+                <span data-i18n="footer.rights"
+                    >Ocure Analytics. All rights reserved.</span
+                >
             </div>
         </footer>
 
         <script>
+            /* ============== Translations ============== */
+            const I18N = {
+                en: {
+                    "meta.title": "Ocure Analytics — AI Consulting",
+                    "meta.desc":
+                        "Ocure Analytics is a boutique AI consultancy helping companies find, design, and implement high‑value AI solutions — from on‑prem inference to cloud deployments. Official representative for Abstractor and Epher.",
+                    "nav.about": "About",
+                    "nav.services": "Services",
+                    "nav.products": "Products",
+                    "nav.process": "Process",
+                    "nav.philosophy": "Philosophy",
+                    "nav.contact": "Get in touch",
+                    "hero.eyebrow": "Boutique AI Consultancy",
+                    "hero.title": "Where insight meets intelligence.",
+                    "hero.lead":
+                        "We help businesses harness the power of AI — thoughtfully, efficiently, and responsibly. From strategy to implementation, we turn your data into decisions and your vision into value.",
+                    "hero.cta1": "Book a consultation",
+                    "hero.cta2": "Explore services",
+                    "hero.badge":
+                        "On‑prem inference • Cloud deployments • Ethical AI",
+                    "about.title": "About Ocure Analytics",
+                    "about.lead":
+                        "Ocure Analytics is a boutique AI consultancy specializing in the practical and ethical application of artificial intelligence. We help organizations identify real opportunities for AI integration — not just experiments, but systems that deliver measurable results.",
+                    "about.li1":
+                        "Deep expertise across data architecture, machine learning, and process automation.",
+                    "about.li2":
+                        "Tailored solutions that align with business goals and scale over time.",
+                    "about.li3":
+                        "Transparent, responsible AI practices with emphasis on reliability and governance.",
+                    "services.title": "What we do",
+                    "services.lead":
+                        "From on‑prem inference systems to cloud‑based deployments — we design efficient, secure, and maintainable AI architectures, integrate them with your systems, and enable your teams to adopt and evolve them.",
+                    "services.s1.badge": "Discovery",
+                    "services.s1.title": "AI Readiness Assessment",
+                    "services.s1.body":
+                        "We analyze workflows, data landscape, and business objectives to reveal where AI creates measurable value.",
+                    "services.s2.badge": "Architecture",
+                    "services.s2.title": "Solution Design",
+                    "services.s2.body":
+                        "End‑to‑end design of robust systems: on‑prem inference, hybrid setups, and cloud‑native deployments.",
+                    "services.s3.badge": "Delivery",
+                    "services.s3.title": "Integration & Implementation",
+                    "services.s3.body":
+                        "Model selection, MLOps pipelines, security, monitoring, and seamless integration with existing tools.",
+                    "services.s4.badge": "Enablement",
+                    "services.s4.title": "Advisory & Training",
+                    "services.s4.body":
+                        "Hands‑on upskilling and governance frameworks so AI becomes a sustainable organizational capability.",
+                    "products.eyebrow": "Representation & Consultancy",
+                    "products.title": "Products we represent",
+                    "products.lead":
+                        "Beyond our own consulting practice, Ocure Analytics is a representative and consultancy partner for a select group of European, sovereignty‑first AI products. We help you evaluate them, choose the right setup, and put them into production — with hands‑on guidance at every step.",
+                    "products.abstractor.badge": "Representation & Consultancy",
+                    "products.abstractor.tagline": "“Your process, as a service.”",
+                    "products.abstractor.body":
+                        "Abstractor turns your existing business processes into running, governed AI services — without code or prompt engineering. You upload the documents that describe how the work gets done (SOPs, policies, templates), show a handful of input/output examples, and describe the rules in plain language. Abstractor deploys it as a live service behind an API or webhook, where every decision is logged with a signed, tamper‑evident audit trail. It runs on EU‑sovereign infrastructure — no data leaves the EU — with compliance tooling for the EU AI Act and GDPR built in. As a representative and consultancy partner, Ocure Analytics helps you identify the right processes, model them, and put them safely into production.",
+                    "products.abstractor.f1": "No code required",
+                    "products.abstractor.f2": "Auditable by construction",
+                    "products.abstractor.f3": "EU‑resident hosting",
+                    "products.abstractor.f4": "Sub‑second decisions",
+                    "products.abstractor.link": "Visit abstractor.io",
+                    "products.epher.badge": "Representation & Consultancy",
+                    "products.epher.tagline": "“Run state in the EU, and prove it.”",
+                    "products.epher.body":
+                        "Epher Compute Chain — built by GINF Systems on the open Ephernity protocol — lets you run state in the EU and prove it, then compute on it deterministically. It combines two first‑class pillars on one EU‑attested substrate: tamper‑evident, hardware‑attested storage with retention from milliseconds to years, and deterministic workflows whose every call can be replayed byte‑for‑byte and verified by anyone — even offline. Operated end‑to‑end by an EU entity with post‑quantum signing, it is built for regulated workloads where “who wrote what, when” and “how was this decided” must stand up to an auditor. Ocure Analytics provides representation and hands‑on consultancy to help you choose the right edition and integrate verifiable storage and compute into your systems.",
+                    "products.epher.f1": "Tamper‑evident storage",
+                    "products.epher.f2": "Deterministic compute",
+                    "products.epher.f3": "EU‑sovereign",
+                    "products.epher.f4": "Post‑quantum signing",
+                    "products.epher.link": "Visit epher.cc",
+                    "process.title": "How we work",
+                    "process.lead":
+                        "A lean, collaborative approach designed for clarity, speed, and measurable outcomes.",
+                    "process.p1.title": "1) Map opportunities",
+                    "process.p1.body":
+                        "Stakeholder interviews, workflow and data audit; quick wins vs. strategic bets.",
+                    "process.p2.title": "2) Design & validate",
+                    "process.p2.body":
+                        "Architecture blueprints, proof‑of‑concepts, success metrics, and risk assessment.",
+                    "process.p3.title": "3) Implement & enable",
+                    "process.p3.body":
+                        "Integration, rollout, monitoring, and training — with a clear path to scale.",
+                    "philosophy.title": "Our philosophy",
+                    "philosophy.quote":
+                        "We believe AI is not about replacing people — it’s about augmenting human insight. Our mission is to make artificial intelligence accessible, transparent, and genuinely useful for every organization we work with.",
+                    "contact.title": "Let’s build your AI advantage",
+                    "contact.lead":
+                        "Tell us where you want to create value — we’ll help you get there.",
+                    "contact.email": "Email us",
+                    "footer.tagline": "Build your AI advantage",
+                    "footer.cookies": "Cookie preferences",
+                    "footer.publications":
+                        "Publications: tablettavizsgalat.hu",
+                    "footer.privacy": "Privacy",
+                    "footer.rights": "Ocure Analytics. All rights reserved.",
+                },
+                hu: {
+                    "meta.title": "Ocure Analytics — MI tanácsadás",
+                    "meta.desc":
+                        "Az Ocure Analytics boutique MI tanácsadó cég. Segítünk megtalálni, megtervezni és bevezetni a magas értékű MI‑megoldásokat — az on‑prem inferenciától a felhőalapú rendszerekig. Az Abstractor és az Epher hivatalos képviselője.",
+                    "nav.about": "Rólunk",
+                    "nav.services": "Szolgáltatások",
+                    "nav.products": "Termékek",
+                    "nav.process": "Módszerünk",
+                    "nav.philosophy": "Filozófiánk",
+                    "nav.contact": "Kapcsolat",
+                    "hero.eyebrow": "Boutique MI tanácsadás",
+                    "hero.title": "Ahol az elemzés találkozik az intelligenciával.",
+                    "hero.lead":
+                        "Segítünk a vállalatoknak átgondoltan, hatékonyan és felelősen kiaknázni a mesterséges intelligenciát. A stratégiától a megvalósításig — adatból döntést, vízióból értéket teremtünk.",
+                    "hero.cta1": "Konzultáció foglalása",
+                    "hero.cta2": "Szolgáltatások megtekintése",
+                    "hero.badge":
+                        "On‑prem inferencia • Felhőalapú rendszerek • Etikus MI",
+                    "about.title": "Az Ocure Analytics‑ről",
+                    "about.lead":
+                        "Az Ocure Analytics boutique MI tanácsadó cég, amely a mesterséges intelligencia gyakorlati és etikus alkalmazására specializálódott. Abban segítünk a szervezeteknek, hogy azonosítsák az MI‑integráció valódi lehetőségeit — nem csupán kísérleteket, hanem mérhető eredményt hozó rendszereket.",
+                    "about.li1":
+                        "Mély szakértelem adatarchitektúrában, gépi tanulásban és folyamatautomatizálásban.",
+                    "about.li2":
+                        "Az üzleti célokhoz illeszkedő, idővel skálázható, testre szabott megoldások.",
+                    "about.li3":
+                        "Átlátható, felelős MI‑gyakorlatok, a megbízhatóságra és a governance‑re helyezve a hangsúlyt.",
+                    "services.title": "Amivel foglalkozunk",
+                    "services.lead":
+                        "Az on‑prem inferencia rendszerektől a felhőalapú megoldásokig — hatékony, biztonságos és fenntartható MI‑architektúrákat tervezünk, integráljuk őket meglévő rendszereivel, és felkészítjük csapatait a használatukra és továbbfejlesztésükre.",
+                    "services.s1.badge": "Felmérés",
+                    "services.s1.title": "MI‑érettségi felmérés",
+                    "services.s1.body":
+                        "Elemezzük a folyamatokat, az adatkörnyezetet és az üzleti célokat, hogy feltárjuk, hol teremt mérhető értéket az MI.",
+                    "services.s2.badge": "Architektúra",
+                    "services.s2.title": "Megoldástervezés",
+                    "services.s2.body":
+                        "Robusztus rendszerek teljes körű tervezése: on‑prem inferencia, hibrid felállás és felhő‑native megoldások.",
+                    "services.s3.badge": "Megvalósítás",
+                    "services.s3.title": "Integráció és bevezetés",
+                    "services.s3.body":
+                        "Modellválasztás, MLOps folyamatok, biztonság, monitorozás és zökkenőmentes illesztés a meglévő eszközökhöz.",
+                    "services.s4.badge": "Képességépítés",
+                    "services.s4.title": "Tanácsadás és tréning",
+                    "services.s4.body":
+                        "Gyakorlati tudásátadás és governance‑keretek, hogy az MI tartós szervezeti képességgé váljon.",
+                    "products.eyebrow": "Képviselet és tanácsadás",
+                    "products.title": "Az általunk képviselt termékek",
+                    "products.lead":
+                        "Tanácsadói tevékenységünkön túl az Ocure Analytics képviselője és tanácsadó partnere néhány európai, szuverenitásra épülő MI‑terméknek. Segítünk kiértékelni őket, kiválasztani a megfelelő felállást, és éles üzembe állítani — gyakorlati támogatással minden lépésnél.",
+                    "products.abstractor.badge": "Képviselet és tanácsadás",
+                    "products.abstractor.tagline": "„A folyamata, szolgáltatásként.”",
+                    "products.abstractor.body":
+                        "Az Abstractor a meglévő üzleti folyamatait alakítja működő, szabályozott MI‑szolgáltatásokká — kód és prompt‑mérnökösködés nélkül. Feltölti a dokumentumokat, amelyek leírják, hogyan végzik a munkát (eljárásrendek, szabályzatok, sablonok), bemutat néhány bemenet–kimenet példát, és közönséges nyelven leírja a szabályokat. Az Abstractor mindezt élő szolgáltatásként telepíti egy API vagy webhook mögé, ahol minden döntést aláírt, manipulációállóan naplózott audit‑nyom rögzít. EU‑szuverén infrastruktúrán fut — egyetlen adat sem hagyja el az EU‑t —, beépített megfelelőségi eszközökkel az EU AI Act‑hez és a GDPR‑hez. Képviselőként és tanácsadó partnerként az Ocure Analytics segít azonosítani a megfelelő folyamatokat, modellezni azokat, és biztonságosan éles üzembe állítani.",
+                    "products.abstractor.f1": "Nem igényel kódolást",
+                    "products.abstractor.f2": "Eleve auditálható",
+                    "products.abstractor.f3": "EU‑n belüli tárhely",
+                    "products.abstractor.f4": "Másodperc alatti döntések",
+                    "products.abstractor.link": "Tovább: abstractor.io",
+                    "products.epher.badge": "Képviselet és tanácsadás",
+                    "products.epher.tagline": "„Tárolja az állapotát az EU‑ban — és bizonyítsa is.”",
+                    "products.epher.body":
+                        "Az Epher Compute Chain — amelyet a GINF Systems épített a nyílt Ephernity protokollra — lehetővé teszi, hogy az állapotát az EU‑ban tárolja és bizonyíthatóan kezelje, majd determinisztikusan számoljon rajta. Két egyenrangú pillért egyesít egyetlen EU‑tanúsított alapon: manipulációálló, hardveresen tanúsított tárolást, amelynek megőrzési ideje az ezredmásodperctől az évekig terjed, valamint determinisztikus munkafolyamatokat, amelyek minden hívása bájtról bájtra visszajátszható, és bárki — akár offline is — ellenőrizheti. Egy EU‑s entitás üzemelteti végponttól végpontig, poszt‑kvantum aláírással, és olyan szabályozott terhelésekre készült, ahol a „ki, mit, mikor írt” és a „hogyan született ez a döntés” kérdéseknek egy auditor előtt is meg kell állniuk. Az Ocure Analytics képviseletet és gyakorlati tanácsadást nyújt a megfelelő kiadás kiválasztásához, valamint az ellenőrizhető tárolás és számítás rendszereibe való integrálásához.",
+                    "products.epher.f1": "Manipulációálló tárolás",
+                    "products.epher.f2": "Determinisztikus számítás",
+                    "products.epher.f3": "EU‑szuverén",
+                    "products.epher.f4": "Poszt‑kvantum aláírás",
+                    "products.epher.link": "Tovább: epher.cc",
+                    "process.title": "Hogyan dolgozunk",
+                    "process.lead":
+                        "Karcsú, együttműködésen alapuló megközelítés a tisztánlátásért, a gyorsaságért és a mérhető eredményekért.",
+                    "process.p1.title": "1) Lehetőségek feltérképezése",
+                    "process.p1.body":
+                        "Stakeholder‑interjúk, folyamat‑ és adataudit; gyors nyereségek kontra stratégiai tétek.",
+                    "process.p2.title": "2) Tervezés és validáció",
+                    "process.p2.body":
+                        "Architektúra‑vázlatok, proof‑of‑concept megoldások, sikermutatók és kockázatelemzés.",
+                    "process.p3.title": "3) Bevezetés és képességátadás",
+                    "process.p3.body":
+                        "Integráció, bevezetés, monitorozás és tréning — egyértelmű skálázási útvonallal.",
+                    "philosophy.title": "Filozófiánk",
+                    "philosophy.quote":
+                        "Hisszük, hogy a mesterséges intelligencia nem az emberek kiváltásáról szól, hanem az emberi megértés megerősítéséről. Célunk, hogy az MI elérhető, átlátható és valóban hasznos legyen minden partnerünk számára.",
+                    "contact.title": "Építsük fel együtt az Ön MI‑előnyét",
+                    "contact.lead":
+                        "Mondja el, hol szeretne értéket teremteni — mi segítünk eljutni oda.",
+                    "contact.email": "Írjon nekünk",
+                    "footer.tagline": "Építse fel MI‑előnyét",
+                    "footer.cookies": "Süti beállítások",
+                    "footer.publications":
+                        "Publikációk: tablettavizsgalat.hu",
+                    "footer.privacy": "Adatvédelem",
+                    "footer.rights":
+                        "Ocure Analytics. Minden jog fenntartva.",
+                },
+            };
+
+            const LANG_KEY = "ocure.lang";
+            const SUPPORTED = ["en", "hu"];
+
+            function resolveInitialLang() {
+                // 1) explicit ?lang= override, 2) stored choice, 3) browser/system language
+                const params = new URLSearchParams(location.search);
+                const q = (params.get("lang") || "").toLowerCase();
+                if (SUPPORTED.includes(q)) return q;
+
+                const stored = localStorage.getItem(LANG_KEY);
+                if (stored && SUPPORTED.includes(stored)) return stored;
+
+                const navLangs = navigator.languages || [navigator.language || ""];
+                if (navLangs.some((l) => (l || "").toLowerCase().startsWith("hu")))
+                    return "hu";
+
+                return "en"; // default
+            }
+
+            function applyLang(lang, persist) {
+                if (!SUPPORTED.includes(lang)) lang = "en";
+                const dict = I18N[lang];
+                document.documentElement.lang = lang;
+
+                document.querySelectorAll("[data-i18n]").forEach((node) => {
+                    const key = node.getAttribute("data-i18n");
+                    const val = dict[key];
+                    if (val === undefined) return;
+                    const attr = node.getAttribute("data-i18n-attr");
+                    if (attr) node.setAttribute(attr, val);
+                    else node.textContent = val;
+                });
+
+                document
+                    .querySelectorAll(".lang-switch button")
+                    .forEach((b) =>
+                        b.setAttribute(
+                            "aria-pressed",
+                            String(b.dataset.lang === lang),
+                        ),
+                    );
+
+                if (persist) localStorage.setItem(LANG_KEY, lang);
+            }
+
+            // Initial render
+            applyLang(resolveInitialLang(), false);
+
+            // Language selector
+            document
+                .querySelectorAll(".lang-switch button")
+                .forEach((b) =>
+                    b.addEventListener("click", () =>
+                        applyLang(b.dataset.lang, true),
+                    ),
+                );
+
             // Mobile menu toggle
             const menu = document.getElementById("menu");
             const toggle = document.getElementById("menuToggle");
